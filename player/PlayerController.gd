@@ -57,6 +57,6 @@ func camera_rotation(mouse_move: Vector2, delta: float):
 	camera.rotate_x(-mouse_move.y * mouse_sensitivity * delta)
 	camera.rotation.x = clamp(
 		camera.rotation.x,
-		-1,
-		1
+		-1.1,
+		1.1
 	)
