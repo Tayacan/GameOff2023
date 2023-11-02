@@ -51,6 +51,13 @@ func _physics_process(delta):
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 2)
 
 	move_and_slide()
+	
+	var push_force = 20
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func camera_rotation(mouse_move: Vector2, delta: float):
 	head.rotate_y(-mouse_move.x * mouse_sensitivity * delta)
