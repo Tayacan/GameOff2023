@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://doh7ywv4ugnqn"]
+[gd_scene load_steps=8 format=3 uid="uid://doh7ywv4ugnqn"]
 
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
+[ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
+[ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/blue_green.tres" id="2_ynlgk"]
+[ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifgpx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,9 +18,6 @@ sky = SubResource("Sky_qti6a")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16nft"]
-albedo_color = Color(0.517647, 0.427451, 0.811765, 1)
-
 [node name="Playground" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -31,12 +31,85 @@ environment = SubResource("Environment_dekjr")
 
 [node name="Map" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
-material_override = SubResource("StandardMaterial3D_16nft")
+[node name="Ground" type="CSGBox3D" parent="Map"]
+material_override = ExtResource("2_fstnw")
 use_collision = true
-size = Vector3(12, 0.002, 12)
+size = Vector3(16, 0.002, 16)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
+[node name="Box 1" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 2)
+material_override = ExtResource("3_di84c")
 use_collision = true
 size = Vector3(2, 1, 2)
+
+[node name="Box 2" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 6)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 3" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 4)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 4" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 6)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 5" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 6)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 6" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 6)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 7" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 8" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -6)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 9" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -6)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Wall 1" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8)
+material_override = ExtResource("2_ynlgk")
+use_collision = true
+size = Vector3(16, 6, 0.002)
+
+[node name="Wall 2" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 3, 0)
+material_override = ExtResource("2_ynlgk")
+use_collision = true
+size = Vector3(16, 6, 0.002)
+
+[node name="Wall 3" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 3, 0)
+material_override = ExtResource("2_ynlgk")
+use_collision = true
+size = Vector3(16, 6, 0.002)
+
+[node name="Wall 4" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8)
+material_override = ExtResource("2_ynlgk")
+use_collision = true
+size = Vector3(16, 6, 0.002)
