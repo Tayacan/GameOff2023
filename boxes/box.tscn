@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dranormtiujx8"]
+
+[ext_resource type="Material" uid="uid://pnj0vkkry7d0" path="res://materials/yellow.tres" id="1_861mp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iqvya"]
+radius = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_skvu0"]
+
+[node name="Box" type="RigidBody3D"]
+transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, 0, 0, 0)
+max_contacts_reported = 9
+contact_monitor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_iqvya")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_861mp")
+mesh = SubResource("BoxMesh_skvu0")
+skeleton = NodePath("../..")

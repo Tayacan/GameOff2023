@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://doh7ywv4ugnqn"]
+[gd_scene load_steps=9 format=3 uid="uid://doh7ywv4ugnqn"]
 
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
 [ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/blue_green.tres" id="2_ynlgk"]
 [ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
-[ext_resource type="Material" uid="uid://pnj0vkkry7d0" path="res://materials/yellow.tres" id="5_gmtnw"]
+[ext_resource type="PackedScene" uid="uid://dranormtiujx8" path="res://boxes/box.tscn" id="5_fo08u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifgpx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,11 +18,6 @@ background_mode = 2
 sky = SubResource("Sky_qti6a")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_iqvya"]
-radius = 1.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_skvu0"]
 
 [node name="Playground" type="Node3D"]
 
@@ -124,15 +119,17 @@ size = Vector3(16, 6, 0.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08519, -0.121813, -0.776907)
 use_collision = true
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, 0.545042, 2.47046, -3.44117)
-max_contacts_reported = 9
-contact_monitor = true
+[node name="Box 1" parent="." instance=ExtResource("5_fo08u")]
+transform = Transform3D(0.745243, -0.433543, 0.50661, 0.57746, 0.039748, -0.815451, 0.333397, 0.900257, 0.279975, 4.54504, 3.47046, -3.44117)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("SphereShape3D_iqvya")
+[node name="Box 2" parent="." instance=ExtResource("5_fo08u")]
+transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, 1.7312, 6.58122, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-material_override = ExtResource("5_gmtnw")
-mesh = SubResource("BoxMesh_skvu0")
-skeleton = NodePath("../..")
+[node name="Box 3" parent="." instance=ExtResource("5_fo08u")]
+transform = Transform3D(0.372621, 0.44121, 0.816387, 0.892329, -0.411872, -0.18469, 0.25476, 0.797306, -0.547177, -4.45496, 2.47046, -3.44117)
+
+[node name="Box 4" parent="." instance=ExtResource("5_fo08u")]
+transform = Transform3D(0.372621, 0.44121, 0.816387, 0.892329, -0.411872, -0.18469, 0.25476, 0.797306, -0.547177, -1.5714, 2.47046, 2.92571)
+
+[node name="Box 5" parent="." instance=ExtResource("5_fo08u")]
+transform = Transform3D(0.573328, -0.580205, -0.578496, -0.778712, -0.166334, -0.60493, 0.25476, 0.797306, -0.547177, 2.32398, 7.47045, 2.51835)
