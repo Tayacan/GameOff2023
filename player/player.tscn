@@ -9,6 +9,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2in15"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4b4fj"]
+size = Vector3(1, 1, 2)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03251, 0)
@@ -34,7 +35,7 @@ script = ExtResource("2_j518k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.579977, -1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/PushArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.294956)
 shape = SubResource("BoxShape3D_4b4fj")
 
 [node name="Linker" type="Node3D" parent="."]
