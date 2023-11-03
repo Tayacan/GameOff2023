@@ -16,6 +16,21 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	handle_clear()
+	handle_link()
+
+func handle_clear():
+	if Input.is_action_just_pressed("clear_link"):
+		if link_obj_1:
+			l1_indicator.queue_free()
+			link_obj_1.remove_link()
+			link_obj_1 = null
+		if link_obj_2:
+			l2_indicator.queue_free()
+			link_obj_2.remove_link()
+			link_obj_2 = null
+
+func handle_link():
 	if Input.is_action_just_pressed("link") and obj_to_link and obj_to_link.has_method("add_link"):
 		# Remove old link if there is one
 		if link_obj_1 and link_obj_2:

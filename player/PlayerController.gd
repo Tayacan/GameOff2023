@@ -79,7 +79,6 @@ func push(vel: Vector3):
 		var direction_to_obj = transform.origin.direction_to(obj_to_push.transform.origin)
 		var d = vel.normalized().dot(direction_to_obj)
 		if d > 0.5:
-			#obj_to_push.move_and_collide(vel)
 			obj_to_push.add_velocity(vel)
 
 func _on_body_entered_push_area(body):

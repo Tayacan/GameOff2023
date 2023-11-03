@@ -8,8 +8,6 @@ func _physics_process(_delta):
 	if linked_obj:
 		linked_obj.link_velocity = velocity
 		link_velocity = linked_obj.velocity
-	
-
 
 func add_link(obj: Node3D):
 	linked_obj = obj
