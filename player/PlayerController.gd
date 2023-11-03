@@ -4,10 +4,14 @@ extends CharacterBody3D
 @onready var camera = $Head/Camera3D
 
 @export var SPEED = 5.0
+@export var PUSH_SPEED = 2.5
 @export var JUMP_VELOCITY = 4.5
+var current_speed = 0
 
 @export var mouse_sensitivity = 0.05
 var mouse_move : Vector2 = Vector2(0, 0)
+
+var obj_to_push : AnimatableBody3D = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -43,21 +47,23 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if is_on_floor():
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+	if obj_to_push:
+		current_speed = PUSH_SPEED
 	else:
-		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 2)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 2)
-
+		current_speed = SPEED
+	
+	var position = transform.origin
+	if is_on_floor():
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
+	else:
+		velocity.x = lerp(velocity.x, direction.x * current_speed, delta * 2)
+		velocity.z = lerp(velocity.z, direction.z * current_speed, delta * 2)
+	
 	move_and_slide()
+	push(transform.origin - position)
 	
-	var push_force = 20
-	
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody3D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+	push_rbs()
 
 func camera_rotation(mouse_move: Vector2, delta: float):
 	head.rotate_y(-mouse_move.x * mouse_sensitivity * delta)
@@ -67,3 +73,27 @@ func camera_rotation(mouse_move: Vector2, delta: float):
 		-1.1,
 		1.1
 	)
+
+func push_rbs():
+	var push_force = .5
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+
+func push(vel: Vector3):
+	if obj_to_push:
+		var vec_to_obj = obj_to_push.transform.origin - transform.origin
+		var d = vel.normalized().dot(vec_to_obj.normalized())
+		print_debug(d)
+		if d > 0.5:
+			obj_to_push.move_and_collide(vel)
+
+func _on_body_entered_push_area(body):
+	if body is AnimatableBody3D:
+		obj_to_push = body as AnimatableBody3D
+
+func _on_body_exited_push_area(body):
+	if body is AnimatableBody3D:
+		obj_to_push = null
