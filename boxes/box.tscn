@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ijgj4cyrxngg"]
+[gd_scene load_steps=5 format=3 uid="uid://ijgj4cyrxngg"]
 
+[ext_resource type="Script" path="res://boxes/LinkableBox.gd" id="1_0i512"]
 [ext_resource type="Material" uid="uid://pnj0vkkry7d0" path="res://materials/yellow.tres" id="1_861mp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rvsql"]
@@ -9,6 +10,7 @@ size = Vector3(2, 2, 2)
 size = Vector3(2, 2, 2)
 
 [node name="Box" type="AnimatableBody3D"]
+script = ExtResource("1_0i512")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
