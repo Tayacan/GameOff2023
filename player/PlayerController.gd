@@ -16,20 +16,12 @@ var obj_to_push : AnimatableBody3D = null
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	elif event is InputEventMouseMotion:
+	if event is InputEventMouseMotion:
 		mouse_move = event.relative
 
 func _physics_process(delta):
-	# Mouse mode
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
 	# Camera rotation
 	camera_rotation(mouse_move, delta)
 	mouse_move.x = 0
@@ -52,7 +44,7 @@ func _physics_process(delta):
 	else:
 		current_speed = SPEED
 	
-	var position = transform.origin
+	var current_position = transform.origin
 	if is_on_floor():
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
@@ -61,7 +53,7 @@ func _physics_process(delta):
 		velocity.z = lerp(velocity.z, direction.z * current_speed, delta * 2)
 	
 	move_and_slide()
-	push(transform.origin - position)
+	push(transform.origin - current_position)
 	
 	push_rbs()
 
@@ -84,9 +76,8 @@ func push_rbs():
 
 func push(vel: Vector3):
 	if obj_to_push:
-		var vec_to_obj = obj_to_push.transform.origin - transform.origin
-		var d = vel.normalized().dot(vec_to_obj.normalized())
-		print_debug(d)
+		var direction_to_obj = transform.origin.direction_to(obj_to_push.transform.origin)
+		var d = vel.normalized().dot(direction_to_obj)
 		if d > 0.5:
 			obj_to_push.move_and_collide(vel)
 

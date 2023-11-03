@@ -1,25 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dranormtiujx8"]
+[gd_scene load_steps=4 format=3 uid="uid://ijgj4cyrxngg"]
 
 [ext_resource type="Material" uid="uid://pnj0vkkry7d0" path="res://materials/yellow.tres" id="1_861mp"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y8gjn"]
-friction = 0.9
-rough = true
+[sub_resource type="BoxMesh" id="BoxMesh_rvsql"]
+size = Vector3(2, 2, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i23eb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrk3p"]
+size = Vector3(2, 2, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_skvu0"]
-
-[node name="Box" type="RigidBody3D"]
-transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, 0, 0, 0)
-mass = 2.5
-physics_material_override = SubResource("PhysicsMaterial_y8gjn")
-max_contacts_reported = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_i23eb")
+[node name="Box" type="AnimatableBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_861mp")
-mesh = SubResource("BoxMesh_skvu0")
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_rvsql")
+surface_material_override/0 = ExtResource("1_861mp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_qrk3p")

@@ -4,7 +4,9 @@
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
 [ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/blue_green.tres" id="2_ynlgk"]
 [ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
-[ext_resource type="PackedScene" uid="uid://dranormtiujx8" path="res://boxes/box.tscn" id="5_fo08u"]
+[ext_resource type="PackedScene" uid="uid://dranormtiujx8" path="res://boxes/box_physics.tscn" id="5_fo08u"]
+[ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="6_7vcvm"]
+[ext_resource type="Script" path="res://scenes/GameControl.gd" id="7_joxcs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifgpx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,12 +20,7 @@ background_mode = 2
 sky = SubResource("Sky_qti6a")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_rvsql"]
-size = Vector3(2, 2, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qrk3p"]
-size = Vector3(2, 2, 2)
+glow_bloom = 0.09
 
 [node name="Playground" type="Node3D"]
 
@@ -157,30 +154,19 @@ size = Vector3(2, 4, 2)
 
 [node name="Room1 boxes" type="Node3D" parent="."]
 
-[node name="Box 1" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
-transform = Transform3D(0.745243, -0.433543, 0.50661, 0.57746, 0.039748, -0.815451, 0.333397, 0.900257, 0.279975, 4.54504, 3.47046, -3.44117)
+[node name="Box" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
+transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, 2, 6, -2)
 
-[node name="Box 2" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
-transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, 1.7312, 6.58122, 0)
-
-[node name="Box 3" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
-transform = Transform3D(0.372621, 0.44121, 0.816387, 0.892329, -0.411872, -0.18469, 0.25476, 0.797306, -0.547177, -4.45496, 2.47046, -3.44117)
-
-[node name="Box 4" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
-transform = Transform3D(0.372621, 0.44121, 0.816387, 0.892329, -0.411872, -0.18469, 0.25476, 0.797306, -0.547177, -1.5714, 2.47046, 2.92571)
-
-[node name="Box 5" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
-transform = Transform3D(0.573328, -0.580205, -0.578496, -0.778712, -0.166334, -0.60493, 0.25476, 0.797306, -0.547177, 2.32398, 7.47045, 2.51835)
+[node name="Box2" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
+transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, -4, 5, -2)
 
 [node name="Room2 boxes" type="Node3D" parent="."]
 
-[node name="Box" type="AnimatableBody3D" parent="Room2 boxes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+[node name="Box" parent="Room2 boxes" instance=ExtResource("6_7vcvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room2 boxes/Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_rvsql")
+[node name="Box2" parent="Room2 boxes" instance=ExtResource("6_7vcvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room2 boxes/Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_qrk3p")
+[node name="GameControl" type="Node3D" parent="."]
+script = ExtResource("7_joxcs")
