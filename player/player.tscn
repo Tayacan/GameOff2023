@@ -24,6 +24,7 @@ shape = SubResource("CapsuleShape3D_2in15")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.579977, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 60.0
 
 [node name="LookRay" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -5)
