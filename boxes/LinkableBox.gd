@@ -1,18 +1,21 @@
 extends AnimatableBody3D
 
 var linked_obj = null
-var current_position: Vector3
-var delta_position: Vector3
+var velocity: Vector3 = Vector3(0, 0, 0)
+var link_velocity: Vector3 = Vector3(0, 0, 0)
 
-func _ready():
-	current_position = transform.origin
-
-func _physics_process(delta):
-	delta_position = transform.origin - current_position
-	current_position = transform.origin
+func _physics_process(_delta):
+	if linked_obj:
+		linked_obj.link_velocity = velocity
+		link_velocity = linked_obj.velocity
 	
-	if linked_obj and delta_position.length() > 0.01:
-		linked_obj.move_and_collide(delta_position)
+
 
 func add_link(obj: Node3D):
 	linked_obj = obj
+
+func remove_link():
+	linked_obj = null
+
+func add_velocity(vel: Vector3):
+	velocity += vel

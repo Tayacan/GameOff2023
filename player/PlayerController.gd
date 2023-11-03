@@ -57,9 +57,9 @@ func _physics_process(delta):
 	
 	push_rbs()
 
-func camera_rotation(mouse_move: Vector2, delta: float):
-	head.rotate_y(-mouse_move.x * mouse_sensitivity * delta)
-	camera.rotate_x(-mouse_move.y * mouse_sensitivity * delta)
+func camera_rotation(mouse_delta: Vector2, delta: float):
+	head.rotate_y(-mouse_delta.x * mouse_sensitivity * delta)
+	camera.rotate_x(-mouse_delta.y * mouse_sensitivity * delta)
 	camera.rotation.x = clamp(
 		camera.rotation.x,
 		-1.1,
@@ -75,11 +75,12 @@ func push_rbs():
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func push(vel: Vector3):
-	if obj_to_push:
+	if obj_to_push and obj_to_push.has_method("add_velocity"):
 		var direction_to_obj = transform.origin.direction_to(obj_to_push.transform.origin)
 		var d = vel.normalized().dot(direction_to_obj)
 		if d > 0.5:
-			obj_to_push.move_and_collide(vel)
+			#obj_to_push.move_and_collide(vel)
+			obj_to_push.add_velocity(vel)
 
 func _on_body_entered_push_area(body):
 	if body is AnimatableBody3D:
