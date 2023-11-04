@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckbrmcim12alt"]
+
+[ext_resource type="Script" path="res://links/forward_link.gd" id="1_egpnj"]
+
+[node name="ForwardLink" type="Node3D"]
+script = ExtResource("1_egpnj")

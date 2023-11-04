@@ -1,5 +1,10 @@
 # GameOff 2023 project
-<img src="game-off-2023-logo.png" width="100px" />
+<div style="overflow:hidden;">
+<img src="game-off-2023-logo.png" width="100px" style="float:left;" />
+<div style="float:left;">
+A puzzle game about linking objects together.
+</div>
+</div>
 
 ## Controls
 * **Move**: WASD or arrow keys
@@ -13,4 +18,4 @@ There are several ways two objects can be linked:
 * **Static forward link**: As above, but if one object is pushed up against at wall, the other cannot move in that direction.
 * **Reverse link**: As the static forward link, but movement from one object is negated before being applied to the other.
 
-Currently only the forward link is implemented.
+Currently only the forward link and static forward link is implemented.

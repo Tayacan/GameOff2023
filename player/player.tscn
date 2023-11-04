@@ -8,8 +8,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2in15"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4b4fj"]
-size = Vector3(1, 1, 2)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_blw1q"]
+height = 1.27748
+radius = 1.30792
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03251, 0)
@@ -31,19 +32,17 @@ fov = 60.0
 target_position = Vector3(0, 0, -5)
 script = ExtResource("2_j518k")
 
-[node name="PushArea" type="Area3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.579977, -1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/PushArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.294956)
-shape = SubResource("BoxShape3D_4b4fj")
-
 [node name="Linker" type="Node3D" parent="."]
 script = ExtResource("3_4tyvl")
+
+[node name="PushArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PushArea"]
+shape = SubResource("CylinderShape3D_blw1q")
 
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_started_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_stopped_looking_at_item"]
-[connection signal="body_entered" from="Head/PushArea" to="." method="_on_body_entered_push_area"]
-[connection signal="body_exited" from="Head/PushArea" to="." method="_on_body_exited_push_area"]
+[connection signal="body_entered" from="PushArea" to="." method="_on_body_entered_push_area"]
+[connection signal="body_exited" from="PushArea" to="." method="_on_body_exited_push_area"]

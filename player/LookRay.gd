@@ -8,7 +8,7 @@ var looking_at: PhysicsBody3D = null
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var obj = get_collider()
-	if obj is PhysicsBody3D:
+	if obj and obj.is_in_group("linkable"):
 		if obj != looking_at:
 			if looking_at != null:
 				stopped_looking_at_item.emit(looking_at)

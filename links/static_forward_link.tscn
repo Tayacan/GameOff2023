@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmyxsxmvnwuq0"]
+
+[ext_resource type="Script" path="res://links/static_forward_link.gd" id="1_0inil"]
+
+[node name="static_forward_link" type="Node3D"]
+script = ExtResource("1_0inil")

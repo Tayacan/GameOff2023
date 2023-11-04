@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ijgj4cyrxngg"]
+[gd_scene load_steps=5 format=3 uid="uid://ijgj4cyrxngg"]
 
 [ext_resource type="Script" path="res://boxes/LinkableBox.gd" id="1_0i512"]
 [ext_resource type="Material" uid="uid://pnj0vkkry7d0" path="res://materials/yellow.tres" id="1_861mp"]
-[ext_resource type="Script" path="res://boxes/move_box.gd" id="3_v00w5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rvsql"]
 size = Vector3(2, 2, 2)
@@ -10,7 +9,7 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrk3p"]
 size = Vector3(2, 2, 2)
 
-[node name="Box" type="AnimatableBody3D"]
+[node name="Box" type="AnimatableBody3D" groups=["linkable"]]
 script = ExtResource("1_0i512")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -21,6 +20,3 @@ surface_material_override/0 = ExtResource("1_861mp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_qrk3p")
-
-[node name="LateProcess" type="Node3D" parent="."]
-script = ExtResource("3_v00w5")
