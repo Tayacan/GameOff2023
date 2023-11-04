@@ -7,8 +7,7 @@ var obj_1_vel : Vector3 = Vector3(0, 0, 0)
 var obj_2_vel : Vector3 = Vector3(0, 0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	print_debug(obj_1_vel)
+func _physics_process(_delta):
 	obj_1.move_and_collide(obj_1_vel + obj_2_vel)
 	obj_2.move_and_collide(obj_1_vel + obj_2_vel)
 	obj_1_vel = Vector3(0, 0, 0)

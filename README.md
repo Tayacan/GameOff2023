@@ -11,6 +11,7 @@ A puzzle game about linking objects together.
 * **Look around**: Move mouse
 * **Link objects**: Left click
 * **Unlink objects**: Right click
+* **Change link type**: Scroll
 
 ## Link types
 There are several ways two objects can be linked:

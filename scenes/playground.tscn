@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://doh7ywv4ugnqn"]
+[gd_scene load_steps=15 format=3 uid="uid://doh7ywv4ugnqn"]
 
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="6_7vcvm"]
 [ext_resource type="Script" path="res://scenes/GameControl.gd" id="7_joxcs"]
 [ext_resource type="Script" path="res://scenes/WinArea.gd" id="7_t8b0n"]
+[ext_resource type="Script" path="res://scenes/LinkTypeIndicatorUI.gd" id="8_il6h0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifgpx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,6 +36,27 @@ albedo_color = Color(0.270588, 0.721569, 0.878431, 0.627451)
 size = Vector3(6, 4, 16)
 
 [node name="Playground" type="Node3D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 564.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 32
+text = "Move a box into the blue area to win"
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 1091.0
+offset_top = 19.0
+offset_right = 1131.0
+offset_bottom = 59.0
+script = ExtResource("8_il6h0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 16, 0)
@@ -173,11 +195,5 @@ script = ExtResource("7_t8b0n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea/Area3D"]
 shape = SubResource("BoxShape3D_tgnmx")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 188.0
-offset_bottom = 81.0
-theme_override_font_sizes/font_size = 32
-text = "Move a box into the blue area to win"
 
 [connection signal="body_entered" from="WinArea/Area3D" to="WinArea" method="_on_area_3d_body_entered"]
