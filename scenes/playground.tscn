@@ -37,15 +37,10 @@ environment = SubResource("Environment_dekjr")
 
 [node name="Map" type="Node3D" parent="."]
 
-[node name="Ground" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-material_override = ExtResource("2_fstnw")
-use_collision = true
-size = Vector3(32, 0.1, 32)
-
 [node name="Stairs" type="CSGCombiner3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 material_override = ExtResource("3_di84c")
+use_collision = true
 
 [node name="Box 1" type="CSGBox3D" parent="Map/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -60,6 +55,29 @@ use_collision = true
 size = Vector3(2, 2, 2)
 
 [node name="Box 3" type="CSGBox3D" parent="Map/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Stairs2" type="CSGCombiner3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, -2, 22)
+material_override = ExtResource("3_di84c")
+use_collision = true
+
+[node name="Box 1" type="CSGBox3D" parent="Map/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 1, 2)
+
+[node name="Box 2" type="CSGBox3D" parent="Map/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+material_override = ExtResource("3_di84c")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Box 3" type="CSGBox3D" parent="Map/Stairs2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
 material_override = ExtResource("3_di84c")
 use_collision = true
@@ -153,6 +171,23 @@ operation = 2
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/WallUnion/WallSubtract"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 8)
 size = Vector3(2, 4, 2)
+
+[node name="FloorUnion" type="CSGCombiner3D" parent="Map"]
+material_override = ExtResource("2_fstnw")
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="Map/FloorUnion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 8)
+material_override = ExtResource("2_fstnw")
+use_collision = true
+size = Vector3(32, 4, 32)
+
+[node name="FloorSubtract" type="CSGCombiner3D" parent="Map/FloorUnion"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/FloorUnion/FloorSubtract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -1, 16)
+size = Vector3(8, 2, 14)
 
 [node name="Room1 boxes" type="Node3D" parent="."]
 
