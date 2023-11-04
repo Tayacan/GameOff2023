@@ -37,7 +37,7 @@ func handle_clear():
 			link = null
 
 func handle_link():
-	if Input.is_action_just_pressed("link") and obj_to_link and obj_to_link.has_method("add_link"):
+	if Input.is_action_just_pressed("link") and obj_to_link and obj_to_link.is_in_group("linkable"):
 		# Remove old link if there is one
 		if link:
 			l1_indicator.queue_free()

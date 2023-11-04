@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://doh7ywv4ugnqn"]
+[gd_scene load_steps=14 format=3 uid="uid://doh7ywv4ugnqn"]
 
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
 [ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/blue_green.tres" id="2_ynlgk"]
 [ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
-[ext_resource type="PackedScene" uid="uid://dranormtiujx8" path="res://boxes/box_physics.tscn" id="5_fo08u"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="6_7vcvm"]
 [ext_resource type="Script" path="res://scenes/GameControl.gd" id="7_joxcs"]
+[ext_resource type="Script" path="res://scenes/WinArea.gd" id="7_t8b0n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifgpx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,6 +24,16 @@ tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.09
 
+[sub_resource type="BoxMesh" id="BoxMesh_diw7o"]
+size = Vector3(6, 4, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpn67"]
+transparency = 1
+albedo_color = Color(0.270588, 0.721569, 0.878431, 0.627451)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgnmx"]
+size = Vector3(6, 4, 16)
+
 [node name="Playground" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -36,29 +46,6 @@ environment = SubResource("Environment_dekjr")
 [node name="Player" parent="." instance=ExtResource("1_yyvfr")]
 
 [node name="Map" type="Node3D" parent="."]
-
-[node name="Stairs" type="CSGCombiner3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
-material_override = ExtResource("3_di84c")
-use_collision = true
-
-[node name="Box 1" type="CSGBox3D" parent="Map/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 1, 2)
-
-[node name="Box 2" type="CSGBox3D" parent="Map/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 2, 2)
-
-[node name="Box 3" type="CSGBox3D" parent="Map/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 2, 2)
 
 [node name="Stairs2" type="CSGCombiner3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, -2, 22)
@@ -83,41 +70,11 @@ material_override = ExtResource("3_di84c")
 use_collision = true
 size = Vector3(2, 2, 2)
 
-[node name="Box 4" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 6)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 2, 2)
-
-[node name="Box 5" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 6)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 2, 2)
-
-[node name="Box 6" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 6)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 2, 2)
-
-[node name="Box 7" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 2, 2)
-
-[node name="Box 8" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -6)
-material_override = ExtResource("3_di84c")
-use_collision = true
-size = Vector3(2, 2, 2)
-
 [node name="Box 9" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 0)
 material_override = ExtResource("3_di84c")
 use_collision = true
-size = Vector3(2, 2, 2)
+size = Vector3(8, 2, 10)
 
 [node name="WallUnion" type="CSGCombiner3D" parent="Map"]
 material_override = ExtResource("2_ynlgk")
@@ -170,7 +127,7 @@ operation = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/WallUnion/WallSubtract"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 8)
-size = Vector3(2, 4, 2)
+size = Vector3(1.5, 4, 2)
 
 [node name="FloorUnion" type="CSGCombiner3D" parent="Map"]
 material_override = ExtResource("2_fstnw")
@@ -189,24 +146,38 @@ operation = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -1, 16)
 size = Vector3(8, 2, 14)
 
-[node name="Room1 boxes" type="Node3D" parent="."]
+[node name="Boxes" type="Node3D" parent="."]
 
-[node name="Box" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
-transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, 2, 6, -2)
-
-[node name="Box2" parent="Room1 boxes" instance=ExtResource("5_fo08u")]
-transform = Transform3D(0.745243, -0.433543, 0.50661, 0.666793, 0.484551, -0.566214, 2.98023e-08, 0.759771, 0.650191, -4, 5, -2)
-
-[node name="Room2 boxes" type="Node3D" parent="."]
-
-[node name="Box" parent="Room2 boxes" instance=ExtResource("6_7vcvm")]
+[node name="Box" parent="Boxes" instance=ExtResource("6_7vcvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
 
-[node name="Box3" parent="Room2 boxes" instance=ExtResource("6_7vcvm")]
+[node name="Box3" parent="Boxes" instance=ExtResource("6_7vcvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
 
-[node name="Box2" parent="Room2 boxes" instance=ExtResource("6_7vcvm")]
+[node name="Box2" parent="Boxes" instance=ExtResource("6_7vcvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+
+[node name="Box4" parent="Boxes" groups=["win-box"] instance=ExtResource("6_7vcvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, 0)
 
 [node name="GameControl" type="Node3D" parent="."]
 script = ExtResource("7_joxcs")
+
+[node name="WinArea" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2, 0)
+mesh = SubResource("BoxMesh_diw7o")
+surface_material_override/0 = SubResource("StandardMaterial3D_dpn67")
+script = ExtResource("7_t8b0n")
+
+[node name="Area3D" type="Area3D" parent="WinArea"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea/Area3D"]
+shape = SubResource("BoxShape3D_tgnmx")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 188.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 32
+text = "Move a box into the blue area to win"
+
+[connection signal="body_entered" from="WinArea/Area3D" to="WinArea" method="_on_area_3d_body_entered"]

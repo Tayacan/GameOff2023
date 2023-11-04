@@ -54,8 +54,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	push(transform.origin - current_position)
-	
-	push_rbs()
 
 func camera_rotation(mouse_delta: Vector2, delta: float):
 	head.rotate_y(-mouse_delta.x * mouse_sensitivity * delta)
@@ -65,14 +63,6 @@ func camera_rotation(mouse_delta: Vector2, delta: float):
 		-1.1,
 		1.1
 	)
-
-func push_rbs():
-	var push_force = .5
-	
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody3D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func push(vel: Vector3):
 	if obj_to_push and obj_to_push.has_method("add_velocity"):
