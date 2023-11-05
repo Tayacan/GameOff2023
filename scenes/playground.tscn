@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
 [ext_resource type="Script" path="res://fps.gd" id="2_tkf2f"]
-[ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/blue_green.tres" id="2_ynlgk"]
 [ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
+[ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/wall.tres" id="5_ldbqk"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="6_7vcvm"]
 [ext_resource type="Script" path="res://scenes/GameControl.gd" id="7_joxcs"]
 [ext_resource type="Script" path="res://scenes/WinArea.gd" id="7_t8b0n"]
@@ -109,48 +109,48 @@ use_collision = true
 size = Vector3(8, 2, 10)
 
 [node name="WallUnion" type="CSGCombiner3D" parent="Map"]
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 
 [node name="Wall 1" type="CSGBox3D" parent="Map/WallUnion"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8)
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 size = Vector3(32, 6, 0.1)
 
 [node name="Wall 7" type="CSGBox3D" parent="Map/WallUnion"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 24)
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 size = Vector3(32, 6, 0.1)
 
 [node name="Wall 2" type="CSGBox3D" parent="Map/WallUnion"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 3, 0)
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 size = Vector3(16, 6, 0.1)
 
 [node name="Wall 6" type="CSGBox3D" parent="Map/WallUnion"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 3, 16)
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 size = Vector3(16, 6, 0.1)
 
 [node name="Wall 3" type="CSGBox3D" parent="Map/WallUnion"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 3, 0)
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 size = Vector3(16, 6, 0.1)
 
 [node name="Wall 5" type="CSGBox3D" parent="Map/WallUnion"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 3, 16)
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 size = Vector3(16, 6, 0.1)
 
 [node name="Wall 4" type="CSGBox3D" parent="Map/WallUnion"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8)
-material_override = ExtResource("2_ynlgk")
+material_override = ExtResource("5_ldbqk")
 use_collision = true
 size = Vector3(32, 6, 0.1)
 
