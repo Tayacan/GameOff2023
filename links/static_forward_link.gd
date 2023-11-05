@@ -19,6 +19,8 @@ func _physics_process(_delta):
 	col2 = obj_2.move_and_collide(Vector3(0, combined_vel.y, 0), true)
 	if col1 or col2:
 		combined_vel.y = 0
+		obj_1.y_vel = 0
+		obj_2.y_vel = 0
 		
 	col1 = obj_1.move_and_collide(Vector3(0, 0, combined_vel.z), true)
 	col2 = obj_2.move_and_collide(Vector3(0, 0, combined_vel.z), true)
