@@ -53,18 +53,18 @@ text = "Move a box into the blue area to win"
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 layout_mode = 0
-offset_left = 1091.0
-offset_top = 19.0
-offset_right = 1131.0
-offset_bottom = 59.0
+offset_left = 1864.0
+offset_top = 17.0
+offset_right = 1904.0
+offset_bottom = 57.0
 script = ExtResource("8_il6h0")
 
 [node name="FPS counter" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 1015.0
-offset_top = 16.0
-offset_right = 1073.0
-offset_bottom = 42.0
+offset_left = 1788.0
+offset_top = 14.0
+offset_right = 1846.0
+offset_bottom = 40.0
 text = "FPS: 77"
 script = ExtResource("2_tkf2f")
 
