@@ -13,13 +13,13 @@ script = ExtResource("1_ybstv")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 theme_override_font_sizes/font_size = 100
 text = "YOU WIN"
 horizontal_alignment = 1
