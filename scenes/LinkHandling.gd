@@ -17,8 +17,8 @@ func _ready():
 	link_objs[LinkType.Forward] = preload("res://links/forward_link.tscn")
 	link_objs[LinkType.StaticForward] = preload("res://links/static_forward_link.tscn")
 
-func next_link_type(link_type : LinkType) -> LinkType:
-	return (link_type + 1) % LinkType.size()
+func next_link_type(current_link_type : LinkType) -> LinkType:
+	return ((current_link_type + 1) % LinkType.size()) as LinkType
 
-func prev_link_type(link_type : LinkType) -> LinkType:
-	return (LinkType.size() + link_type - 1) % LinkType.size()
+func prev_link_type(current_link_type : LinkType) -> LinkType:
+	return ((LinkType.size() + current_link_type - 1) % LinkType.size()) as LinkType
