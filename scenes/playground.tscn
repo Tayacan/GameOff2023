@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://doh7ywv4ugnqn"]
+[gd_scene load_steps=16 format=3 uid="uid://doh7ywv4ugnqn"]
 
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
+[ext_resource type="Script" path="res://fps.gd" id="2_tkf2f"]
 [ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/blue_green.tres" id="2_ynlgk"]
 [ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="6_7vcvm"]
@@ -57,6 +58,15 @@ offset_top = 19.0
 offset_right = 1131.0
 offset_bottom = 59.0
 script = ExtResource("8_il6h0")
+
+[node name="FPS counter" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1015.0
+offset_top = 16.0
+offset_right = 1073.0
+offset_bottom = 42.0
+text = "FPS: 77"
+script = ExtResource("2_tkf2f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 16, 0)
