@@ -8,7 +8,7 @@ extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 var current_speed = 0
 
-@export var mouse_sensitivity = 0.05
+@export var mouse_sensitivity = 1
 var mouse_move : Vector2 = Vector2(0, 0)
 
 var obj_to_push : AnimatableBody3D = null
@@ -16,17 +16,11 @@ var obj_to_push : AnimatableBody3D = null
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		mouse_move = event.relative
+		camera_rotation(event.relative)
 
 func _physics_process(delta):
-	# Camera rotation
-	camera_rotation(mouse_move, delta)
-	mouse_move.x = 0
-	mouse_move.y = 0
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -46,8 +40,8 @@ func _physics_process(delta):
 	
 	var current_position = transform.origin
 	if is_on_floor():
-		velocity.x = direction.x * current_speed
-		velocity.z = direction.z * current_speed
+		velocity.x = lerp(velocity.x, direction.x * current_speed, delta * 20)
+		velocity.z = lerp(velocity.z, direction.z * current_speed, delta * 20)
 	else:
 		velocity.x = lerp(velocity.x, direction.x * current_speed, delta * 2)
 		velocity.z = lerp(velocity.z, direction.z * current_speed, delta * 2)
@@ -55,9 +49,9 @@ func _physics_process(delta):
 	move_and_slide()
 	push(transform.origin - current_position)
 
-func camera_rotation(mouse_delta: Vector2, delta: float):
-	head.rotate_y(-mouse_delta.x * mouse_sensitivity * delta)
-	camera.rotate_x(-mouse_delta.y * mouse_sensitivity * delta)
+func camera_rotation(mouse_delta: Vector2):
+	head.rotate_y(-mouse_delta.x * mouse_sensitivity * 0.001)
+	camera.rotate_x(-mouse_delta.y * mouse_sensitivity * 0.001)
 	camera.rotation.x = clamp(
 		camera.rotation.x,
 		-1.1,
