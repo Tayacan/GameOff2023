@@ -1,5 +1,7 @@
 extends AnimatableBody3D
 
+@export var mass : float = 1
+
 var link = null
 var velocity: Vector3 = Vector3(0, 0, 0)
 

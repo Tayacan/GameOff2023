@@ -188,6 +188,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
 
 [node name="Box2" parent="Boxes" instance=ExtResource("6_7vcvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+mass = 0.5
 
 [node name="Box4" parent="Boxes" groups=["win-box"] instance=ExtResource("6_7vcvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, 0)
