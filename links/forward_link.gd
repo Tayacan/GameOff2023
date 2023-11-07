@@ -8,8 +8,35 @@ var obj_2_vel : Vector3 = Vector3(0, 0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	obj_1.move_and_collide(obj_1_vel + obj_2_vel)
-	obj_2.move_and_collide(obj_1_vel + obj_2_vel)
+	var combined_vel_1 = obj_1_vel + (obj_2_vel * (obj_2.mass / obj_1.mass))
+	var combined_vel_2 = obj_2_vel + (obj_1_vel * (obj_1.mass / obj_2.mass))
+
+	# test movements
+	var col1 = obj_1.move_and_collide(Vector3(combined_vel_1.x, 0, 0), true)
+	var col2 = obj_2.move_and_collide(Vector3(combined_vel_2.x, 0, 0), true)
+	if col1:
+		combined_vel_1.x = 0
+	if col2:
+		combined_vel_2.x = 0
+
+	col1 = obj_1.move_and_collide(Vector3(0, combined_vel_1.y, 0), true)
+	col2 = obj_2.move_and_collide(Vector3(0, combined_vel_2.y, 0), true)
+	if col1:
+		combined_vel_1.y = 0
+		obj_1.y_vel = 0
+	if col2:
+		combined_vel_2.y = 0
+		obj_2.y_vel = 0
+
+	col1 = obj_1.move_and_collide(Vector3(0, 0, combined_vel_1.z), true)
+	col2 = obj_2.move_and_collide(Vector3(0, 0, combined_vel_2.z), true)
+	if col1:
+		combined_vel_1.z = 0
+	if col2:
+		combined_vel_2.z = 0
+	
+	obj_1.move_and_collide(combined_vel_1)
+	obj_2.move_and_collide(combined_vel_2)
 	obj_1_vel = Vector3(0, 0, 0)
 	obj_2_vel = Vector3(0, 0, 0)
 

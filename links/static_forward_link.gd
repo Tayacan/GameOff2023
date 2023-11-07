@@ -10,7 +10,7 @@ var obj_2_vel : Vector3 = Vector3(0, 0, 0)
 func _physics_process(_delta):
 	var combined_vel_1 = obj_1_vel + (obj_2_vel * (obj_2.mass / obj_1.mass))
 	var combined_vel_2 = obj_2_vel + (obj_1_vel * (obj_1.mass / obj_2.mass))
-#	var combined_vel = obj_1_vel + obj_2_vel
+
 	# test movements
 	var col1 = obj_1.move_and_collide(Vector3(combined_vel_1.x, 0, 0), true)
 	var col2 = obj_2.move_and_collide(Vector3(combined_vel_2.x, 0, 0), true)
