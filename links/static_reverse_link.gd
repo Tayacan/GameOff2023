@@ -15,6 +15,12 @@ func _physics_process(_delta):
 	elif obj_2.mass > obj_1.mass:
 		obj_1.y_vel = 0
 		obj_1_vel.y = 0
+	else:
+		obj_2.y_vel = 0
+		obj_2_vel.y = 0
+		obj_1.y_vel = 0
+		obj_1_vel.y = 0
+		
 		
 	# Calculate velocities
 	var combined_vel_1 = obj_1_vel - (obj_2_vel * (obj_2.mass / obj_1.mass))
