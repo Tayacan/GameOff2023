@@ -95,8 +95,4 @@ script = ExtResource("9_aqwv2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5)
 shape = SubResource("BoxShape3D_b6fdt")
 
-[node name="Timer" type="Timer" parent="Map/WinArea"]
-one_shot = true
-
 [connection signal="body_entered" from="Map/WinArea/Area3D" to="Map/WinArea" method="_on_area_3d_body_entered"]
-[connection signal="timeout" from="Map/WinArea/Timer" to="Map/WinArea" method="_on_timer_timeout"]
