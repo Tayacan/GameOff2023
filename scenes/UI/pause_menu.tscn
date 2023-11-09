@@ -21,12 +21,6 @@ theme_type_variation = &"PanelContainerInGame"
 layout_mode = 2
 alignment = 1
 
-[node name="Header" type="Label" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"HeaderLabel"
-text = "Header"
-horizontal_alignment = 1
-
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
