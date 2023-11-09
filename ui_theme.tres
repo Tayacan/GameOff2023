@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cuqrxf4x0528h"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cuqrxf4x0528h"]
 
 [ext_resource type="FontFile" uid="uid://bfctcgpqjx34f" path="res://fonts/multivac/multivac-interference.ttf" id="1_djxe3"]
 [ext_resource type="Texture2D" uid="uid://djnvkeq5303v7" path="res://ui_textures/Button02.png" id="1_t2i0s"]
@@ -52,6 +52,9 @@ texture_margin_bottom = 8.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhbqt"]
 bg_color = Color(0.0588235, 0.184314, 0.243137, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub78"]
+bg_color = Color(0.0588235, 0.184314, 0.243137, 0.466667)
+
 [resource]
 Button/colors/font_hover_color = Color(0.0901961, 0.482353, 0.439216, 1)
 Button/colors/font_hover_pressed_color = Color(0.0901961, 0.486275, 0.439216, 1)
@@ -67,3 +70,5 @@ HeaderLabel/fonts/font = ExtResource("1_djxe3")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_xhbqt")
+PanelContainerInGame/base_type = &"PanelContainer"
+PanelContainerInGame/styles/panel = SubResource("StyleBoxFlat_wub78")

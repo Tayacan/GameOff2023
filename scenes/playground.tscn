@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://doh7ywv4ugnqn"]
+[gd_scene load_steps=17 format=3 uid="uid://doh7ywv4ugnqn"]
 
+[ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/in_game_ui.tscn" id="1_wko2p"]
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
 [ext_resource type="Script" path="res://fps.gd" id="2_tkf2f"]
 [ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
 [ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/wall.tres" id="5_ldbqk"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="6_7vcvm"]
-[ext_resource type="Script" path="res://scenes/GameControl.gd" id="7_joxcs"]
 [ext_resource type="Script" path="res://scenes/WinArea.gd" id="7_t8b0n"]
 [ext_resource type="Script" path="res://scenes/LinkTypeIndicatorUI.gd" id="8_il6h0"]
 
@@ -26,6 +26,10 @@ tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.09
 
+[sub_resource type="GDScript" id="GDScript_5ehhw"]
+script/source = "extends Node3D
+"
+
 [sub_resource type="BoxMesh" id="BoxMesh_diw7o"]
 size = Vector3(6, 4, 16)
 
@@ -37,6 +41,8 @@ albedo_color = Color(0.270588, 0.721569, 0.878431, 0.627451)
 size = Vector3(6, 4, 16)
 
 [node name="Playground" type="Node3D"]
+
+[node name="In-game UI" parent="." instance=ExtResource("1_wko2p")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -194,7 +200,7 @@ mass = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, 0)
 
 [node name="GameControl" type="Node3D" parent="."]
-script = ExtResource("7_joxcs")
+script = SubResource("GDScript_5ehhw")
 
 [node name="WinArea" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2, 0)
