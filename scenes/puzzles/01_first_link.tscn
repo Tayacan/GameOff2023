@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0tewvbl1oowc"]
+
+[ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_prfyc"]
+[ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_s4584"]
+[ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_pdr0y"]
+[ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="4_e0nqd"]
+[ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/wall.tres" id="4_ju7t1"]
+[ext_resource type="Material" uid="uid://d2ridmx1me6qx" path="res://materials/glass.tres" id="6_ykbdd"]
+[ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="7_q54f2"]
+[ext_resource type="Material" uid="uid://ddnbn0mk70cnf" path="res://materials/win_area.tres" id="8_3m00d"]
+[ext_resource type="Script" path="res://scenes/WinArea.gd" id="9_aqwv2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wvkol"]
+material = ExtResource("8_3m00d")
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6fdt"]
+
+[node name="Puzzle01" type="Node3D"]
+
+[node name="UI" parent="." instance=ExtResource("1_s4584")]
+objective = "Move a box into the marked area in the corner"
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_pdr0y")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_e0nqd")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_prfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03251, 8)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Walls" type="CSGCombiner3D" parent="Map"]
+material_override = ExtResource("4_ju7t1")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(10, 1, 22)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 0)
+size = Vector3(10, 1, 22)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+size = Vector3(1, 4, 22)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, 11)
+size = Vector3(1, 4, 22)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, -11)
+size = Vector3(1, 4, 22)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+size = Vector3(1, 2, 22)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 0)
+size = Vector3(1, 4, 22)
+
+[node name="GlassWalls" type="CSGCombiner3D" parent="Map"]
+material_override = ExtResource("6_ykbdd")
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/GlassWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
+size = Vector3(1, 2, 22)
+
+[node name="Boxes" type="Node3D" parent="Map"]
+
+[node name="Box" parent="Map/Boxes" instance=ExtResource("7_q54f2")]
+
+[node name="Box2" parent="Map/Boxes" instance=ExtResource("7_q54f2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="WinArea" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, -9)
+mesh = SubResource("BoxMesh_wvkol")
+script = ExtResource("9_aqwv2")
+
+[node name="Area3D" type="Area3D" parent="Map/WinArea"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/WinArea/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5)
+shape = SubResource("BoxShape3D_b6fdt")
+
+[node name="Timer" type="Timer" parent="Map/WinArea"]
+one_shot = true
+
+[connection signal="body_entered" from="Map/WinArea/Area3D" to="Map/WinArea" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Map/WinArea/Timer" to="Map/WinArea" method="_on_timer_timeout"]

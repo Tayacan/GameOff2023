@@ -1,29 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://doh7ywv4ugnqn"]
+[gd_scene load_steps=14 format=3 uid="uid://doh7ywv4ugnqn"]
 
 [ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="1_wko2p"]
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_yyvfr"]
 [ext_resource type="Material" uid="uid://dg7xodm5ordwh" path="res://materials/purple.tres" id="2_fstnw"]
 [ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="2_r6gyv"]
 [ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="3_di84c"]
+[ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="3_m4coo"]
 [ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/wall.tres" id="5_ldbqk"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="6_7vcvm"]
 [ext_resource type="Script" path="res://scenes/WinArea.gd" id="7_t8b0n"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifgpx"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_qti6a"]
-sky_material = SubResource("ProceduralSkyMaterial_ifgpx")
-
-[sub_resource type="Environment" id="Environment_dekjr"]
-background_mode = 2
-sky = SubResource("Sky_qti6a")
-ambient_light_color = Color(0.898039, 0.894118, 0.631373, 1)
-ambient_light_sky_contribution = 0.8
-tonemap_mode = 2
-glow_enabled = true
-glow_bloom = 0.09
 
 [sub_resource type="GDScript" id="GDScript_5ehhw"]
 script/source = "extends Node3D
@@ -51,7 +36,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dekjr")
+environment = ExtResource("3_m4coo")
 
 [node name="Player" parent="." instance=ExtResource("1_yyvfr")]
 
@@ -185,4 +170,8 @@ script = ExtResource("7_t8b0n")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea/Area3D"]
 shape = SubResource("BoxShape3D_tgnmx")
 
+[node name="Timer" type="Timer" parent="WinArea"]
+one_shot = true
+
 [connection signal="body_entered" from="WinArea/Area3D" to="WinArea" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="WinArea/Timer" to="WinArea" method="_on_timer_timeout"]
