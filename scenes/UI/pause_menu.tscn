@@ -32,6 +32,15 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Resume"
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Reset Level"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -42,4 +51,5 @@ layout_mode = 2
 text = "Quit to Menu"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer3/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]

@@ -21,3 +21,10 @@ func _on_resume_button_pressed():
 func _on_quit_to_menu_button_pressed():
 	get_tree().paused = false
 	Transition.change_scene("res://scenes/UI/main_menu.tscn")
+
+func _on_reset_button_pressed():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().paused = false
+	Transition.reload_scene()
+	await Transition.transition_halfway
+	hide()
