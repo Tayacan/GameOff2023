@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://dl0hs7ygbegqh"]
 
-[ext_resource type="Script" path="res://scenes/UI/in_game_ui.gd" id="1_cqve3"]
+[ext_resource type="Script" path="res://scenes/UI/pause_menu.gd" id="1_doh2a"]
 
-[node name="In-game UI" type="Control"]
+[node name="Pause Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cqve3")
+script = ExtResource("1_doh2a")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
