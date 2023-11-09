@@ -28,6 +28,17 @@ theme_type_variation = &"HeaderLabel"
 text = "A Cool Title"
 horizontal_alignment = 1
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Continue"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1

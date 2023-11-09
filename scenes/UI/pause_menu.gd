@@ -19,6 +19,7 @@ func _on_resume_button_pressed():
 	get_tree().paused = false
 
 func _on_quit_to_menu_button_pressed():
+	save_game()
 	get_tree().paused = false
 	Transition.change_scene("res://scenes/UI/main_menu.tscn")
 
@@ -28,3 +29,9 @@ func _on_reset_button_pressed():
 	Transition.reload_scene()
 	await Transition.transition_halfway
 	hide()
+
+func save_game():
+	var filename = get_tree().current_scene.get_scene_file_path()
+	var save = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	save.store_string(filename)
+	
