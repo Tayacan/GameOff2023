@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_s4584"]
 [ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_pdr0y"]
 [ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="4_e0nqd"]
-[ext_resource type="Material" uid="uid://xnjqbca5n6vj" path="res://materials/wall.tres" id="4_ju7t1"]
+[ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="5_xbs8i"]
 [ext_resource type="Material" uid="uid://d2ridmx1me6qx" path="res://materials/glass.tres" id="6_ykbdd"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="7_q54f2"]
 [ext_resource type="Material" uid="uid://ddnbn0mk70cnf" path="res://materials/win_area.tres" id="8_3m00d"]
@@ -29,6 +29,7 @@ environment = ExtResource("4_e0nqd")
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+shadow_blur = 2.0
 
 [node name="Player" parent="." instance=ExtResource("1_prfyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03251, 8)
@@ -36,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03251, 8)
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Walls" type="CSGCombiner3D" parent="Map"]
-material_override = ExtResource("4_ju7t1")
+material_override = ExtResource("5_xbs8i")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/Walls"]
@@ -61,11 +62,23 @@ size = Vector3(1, 4, 22)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Map/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-size = Vector3(1, 2, 22)
+size = Vector3(1, 1, 22)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.75, 0)
+size = Vector3(1, 0.5, 22)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Map/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 0)
 size = Vector3(1, 4, 22)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -10.5)
+size = Vector3(1, 4, 1)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 10.5)
+size = Vector3(1, 4, 1)
 
 [node name="GlassWalls" type="CSGCombiner3D" parent="Map"]
 material_override = ExtResource("6_ykbdd")
@@ -74,15 +87,17 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/GlassWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
-size = Vector3(1, 2, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 0)
+size = Vector3(1, 2, 20)
 
 [node name="Boxes" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="Box" parent="Map/Boxes" instance=ExtResource("7_q54f2")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3, 0, 1)
 
 [node name="Box2" parent="Map/Boxes" instance=ExtResource("7_q54f2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 9, 0, -4)
 
 [node name="WinArea" type="MeshInstance3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, -9)
