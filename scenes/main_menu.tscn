@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dbbjvj0dmrkpj"]
+[gd_scene load_steps=2 format=3 uid="uid://dbbjvj0dmrkpj"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_3ffmf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3ffmf")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -42,3 +45,6 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
 text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
