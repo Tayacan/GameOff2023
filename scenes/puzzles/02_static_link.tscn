@@ -1,43 +1,43 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0tewvbl1oowc"]
+[gd_scene load_steps=12 format=3 uid="uid://dbthujb2sqauv"]
 
-[ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="1_prfyc"]
-[ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_s4584"]
-[ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_pdr0y"]
-[ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="4_e0nqd"]
-[ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="5_xbs8i"]
-[ext_resource type="Material" uid="uid://d2ridmx1me6qx" path="res://materials/glass.tres" id="6_ykbdd"]
-[ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="7_q54f2"]
-[ext_resource type="Material" uid="uid://ddnbn0mk70cnf" path="res://materials/win_area.tres" id="8_3m00d"]
-[ext_resource type="Script" path="res://scenes/WinArea.gd" id="9_aqwv2"]
+[ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_obs2e"]
+[ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_ma7y8"]
+[ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="3_q4cjv"]
+[ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="4_6e8gy"]
+[ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="5_xdb40"]
+[ext_resource type="Material" uid="uid://d2ridmx1me6qx" path="res://materials/glass.tres" id="6_qgpsu"]
+[ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="7_es5i1"]
+[ext_resource type="Material" uid="uid://ddnbn0mk70cnf" path="res://materials/win_area.tres" id="8_jv33b"]
+[ext_resource type="Script" path="res://scenes/WinArea.gd" id="9_0cf4q"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wvkol"]
-material = ExtResource("8_3m00d")
+material = ExtResource("8_jv33b")
 size = Vector3(3, 3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6fdt"]
 
-[node name="Puzzle01" type="Node3D"]
+[node name="Puzzle02" type="Node3D"]
 
-[node name="UI" parent="." instance=ExtResource("1_s4584")]
+[node name="UI" parent="." instance=ExtResource("1_obs2e")]
 objective = "Move a box into the marked area in the corner"
 
-[node name="Pause Menu" parent="." instance=ExtResource("2_pdr0y")]
+[node name="Pause Menu" parent="." instance=ExtResource("2_ma7y8")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("4_e0nqd")
+environment = ExtResource("3_q4cjv")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 shadow_blur = 2.0
 
-[node name="Player" parent="." instance=ExtResource("1_prfyc")]
+[node name="Player" parent="." instance=ExtResource("4_6e8gy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03251, 8)
 
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Walls" type="CSGCombiner3D" parent="Map"]
-material_override = ExtResource("5_xbs8i")
+material_override = ExtResource("5_xdb40")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/Walls"]
@@ -45,8 +45,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(10, 1, 22)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 0)
-size = Vector3(10, 1, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
+size = Vector3(10, 2, 22)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
@@ -80,8 +80,15 @@ size = Vector3(1, 4, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 10.5)
 size = Vector3(1, 4, 1)
 
+[node name="Subtract" type="CSGCombiner3D" parent="Map/Walls"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Walls/Subtract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
+size = Vector3(9, 2, 6)
+
 [node name="GlassWalls" type="CSGCombiner3D" parent="Map"]
-material_override = ExtResource("6_ykbdd")
+material_override = ExtResource("6_qgpsu")
 use_collision = true
 collision_layer = 2
 collision_mask = 2
@@ -93,17 +100,16 @@ size = Vector3(1, 2, 20)
 [node name="Boxes" type="Node3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[node name="Box" parent="Map/Boxes" instance=ExtResource("7_q54f2")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3, 0, 1)
+[node name="Box" parent="Map/Boxes" instance=ExtResource("7_es5i1")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -2, 0, 1)
 
-[node name="Box2" parent="Map/Boxes" instance=ExtResource("7_q54f2")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 9, 0, -4)
+[node name="Box2" parent="Map/Boxes" instance=ExtResource("7_es5i1")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 12.0602, 1, 0.721383)
 
 [node name="WinArea" type="MeshInstance3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, -9)
 mesh = SubResource("BoxMesh_wvkol")
-script = ExtResource("9_aqwv2")
-next_level = "res://scenes/puzzles/02_static_link.tscn"
+script = ExtResource("9_0cf4q")
 
 [node name="Area3D" type="Area3D" parent="Map/WinArea"]
 

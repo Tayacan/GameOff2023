@@ -7,6 +7,7 @@
 size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrk3p"]
+margin = 0.001
 size = Vector3(2, 2, 2)
 
 [node name="Box" type="AnimatableBody3D" groups=["linkable"]]
