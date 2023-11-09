@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk3ens0hxj6yg"]
+[gd_scene load_steps=5 format=3 uid="uid://bk3ens0hxj6yg"]
 
+[ext_resource type="Theme" uid="uid://do6m4y5l1ruhd" path="res://ui_theme.tres" id="1_8vcox"]
 [ext_resource type="Script" path="res://scenes/UI/ingame_hud.gd" id="1_dborm"]
 [ext_resource type="Script" path="res://scenes/LinkTypeIndicatorUI.gd" id="1_lt5ct"]
 [ext_resource type="Script" path="res://fps.gd" id="2_g4caq"]
@@ -9,6 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_8vcox")
 script = ExtResource("1_dborm")
 
 [node name="ObjectiveLabel" type="Label" parent="."]

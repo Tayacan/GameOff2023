@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://buqkbwbd1715c"]
+[gd_scene load_steps=3 format=3 uid="uid://buqkbwbd1715c"]
 
+[ext_resource type="Theme" uid="uid://do6m4y5l1ruhd" path="res://ui_theme.tres" id="1_1cu4g"]
 [ext_resource type="Script" path="res://scenes/UI/winscreen_ui.gd" id="1_dll0x"]
 
 [node name="winscreen" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1cu4g")
 script = ExtResource("1_dll0x")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
