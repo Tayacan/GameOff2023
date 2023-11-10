@@ -5,10 +5,15 @@ extends AnimatableBody3D
 var link = null
 var velocity: Vector3 = Vector3(0, 0, 0)
 
+var neutral_material: StandardMaterial3D = preload("res://materials/glowing_panels/neutral.tres")
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var y_vel = 0
 
 signal wants_move(velocity: Vector3)
+
+func _ready():
+	set_glow(neutral_material)
 
 func _physics_process(delta):
 	apply_gravity(delta)
@@ -36,3 +41,14 @@ func remove_link():
 
 func add_velocity(vel: Vector3):
 	velocity += vel
+
+func set_glow(material: StandardMaterial3D):
+	for child in get_children():
+		if child.has_method('set_glow_material'):
+			child.set_glow_material(material)
+
+func get_glow() -> StandardMaterial3D:
+	for child in get_children():
+		if child.has_method('get_glow_material'):
+			return child.get_glow_material()
+	return null

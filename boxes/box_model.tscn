@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://coxf5phni3ow1"]
+
+[ext_resource type="PackedScene" uid="uid://wi753blbc7ry" path="res://boxes/box.glb" id="1_jkfiy"]
+[ext_resource type="Script" path="res://boxes/glow.gd" id="2_xeqqk"]
+
+[node name="box" instance=ExtResource("1_jkfiy")]
+script = ExtResource("2_xeqqk")

@@ -4,6 +4,8 @@ signal started_looking_at_item(body: PhysicsBody3D)
 signal stopped_looking_at_item(body: PhysicsBody3D)
 
 var looking_at: PhysicsBody3D = null
+var old_glow_material: StandardMaterial3D = null
+var glow_material: StandardMaterial3D = preload("res://materials/glowing_panels/focus.tres")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -19,26 +21,17 @@ func _process(_delta):
 			stopped_looking_at_item.emit(looking_at)
 			looking_at = null
 
-func highlight(body: GeometryInstance3D):
-	var material : Material = StandardMaterial3D.new()
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color = Color(1, 1, 1, 0.2)
-	material.emission_enabled = true
-	material.emission = Color(0.2, 0.2, 0.8)
-	
-	body.material_overlay = material
+func highlight(body):	
+	old_glow_material = body.get_glow()
+	body.set_glow(glow_material)
 
-func remove_highlight(body: GeometryInstance3D):
-	body.material_overlay = null
-
+func remove_highlight(body):
+	body.set_glow(old_glow_material)
 
 func _on_started_looking_at_item(body):
-	for child in body.get_children():
-		if child is GeometryInstance3D:
-			highlight(child)
-
+	if body.has_method('set_glow'):
+		highlight(body)
 
 func _on_stopped_looking_at_item(body):
-	for child in body.get_children():
-		if child is GeometryInstance3D:
-			remove_highlight(child)
+	if body.has_method('set_glow'):
+		remove_highlight(body)
