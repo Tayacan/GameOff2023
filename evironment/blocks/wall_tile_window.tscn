@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl4kqaohsstfb"]
+
+[ext_resource type="PackedScene" uid="uid://h2p0tfy1uux8" path="res://evironment/models/wall_tile_window.glb" id="1_ucbge"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bh7ma"]
+size = Vector3(0.1, 1.52986, 2.00268)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_khcii"]
+size = Vector3(0.2, 0.947217, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_417ep"]
+size = Vector3(0.2, 0.533662, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rijv8"]
+size = Vector3(0.2, 3, 0.490988)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_28qa1"]
+size = Vector3(0.2, 3, 0.481287)
+
+[node name="wall_tile_window" type="Node3D"]
+
+[node name="wall_tile_window" parent="." instance=ExtResource("1_ucbge")]
+
+[node name="GlassCollision" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="GlassColShape" type="CollisionShape3D" parent="GlassCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.6973, -1.5)
+shape = SubResource("BoxShape3D_bh7ma")
+
+[node name="WallCollision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.475379, -1.5)
+shape = SubResource("BoxShape3D_khcii")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 2.72859, -1.5)
+shape = SubResource("BoxShape3D_417ep")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.5, -0.249592)
+shape = SubResource("BoxShape3D_rijv8")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.5, -2.76144)
+shape = SubResource("BoxShape3D_28qa1")

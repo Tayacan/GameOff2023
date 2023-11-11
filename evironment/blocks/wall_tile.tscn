@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drvtot28bflg8"]
+
+[ext_resource type="PackedScene" uid="uid://pyxm7y2f4a51" path="res://evironment/models/wall_tile.glb" id="1_cg7u1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsii8"]
+size = Vector3(0.2, 3, 3)
+
+[node name="wall_tile" type="Node3D"]
+
+[node name="wall_tile" parent="." instance=ExtResource("1_cg7u1")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.5, -1.5)
+shape = SubResource("BoxShape3D_dsii8")

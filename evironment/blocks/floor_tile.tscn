@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjaqy7nmvlb3t"]
+
+[ext_resource type="PackedScene" uid="uid://b57a8wnqoelxi" path="res://evironment/models/floor_tile.glb" id="1_y1ao3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqtl2"]
+size = Vector3(3, 0.2, 3)
+
+[node name="floor_tile" type="Node3D"]
+
+[node name="floor_tile" parent="." instance=ExtResource("1_y1ao3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.1, -1.5)
+shape = SubResource("BoxShape3D_sqtl2")
