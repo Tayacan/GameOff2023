@@ -22,4 +22,5 @@ There are several ways two objects can be linked:
 
 ## Assets
 * UI assets from [Wenrexia](https://opengameart.org/content/assets-ui-minimalism-scifi).
-* Wall and floor textures from [FreeStylized](https://freestylized.com)
+* Wall and floor textures from [FreeStylized](https://freestylized.com).
+* Box texture from [TextureCan](https://www.texturecan.com/details/609/).
