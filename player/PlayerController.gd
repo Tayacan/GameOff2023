@@ -33,7 +33,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if obj_to_push:
+	if is_pushing(direction):
 		current_speed = PUSH_SPEED
 	else:
 		current_speed = SPEED
@@ -59,11 +59,15 @@ func camera_rotation(mouse_delta: Vector2):
 	)
 
 func push(vel: Vector3):
+	if is_pushing(vel):
+			obj_to_push.add_velocity(vel)
+
+func is_pushing(dir: Vector3) -> bool:
 	if obj_to_push and obj_to_push.has_method("add_velocity"):
 		var direction_to_obj = transform.origin.direction_to(obj_to_push.transform.origin)
-		var d = vel.normalized().dot(direction_to_obj)
-		if d > 0.5:
-			obj_to_push.add_velocity(vel)
+		var d = dir.normalized().dot(direction_to_obj)
+		return d > 0.5
+	return false
 
 func _on_body_entered_push_area(body):
 	if body is AnimatableBody3D:
