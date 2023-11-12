@@ -1,6 +1,6 @@
 extends Control
 
-@onready var continue_button = $PanelContainer/VBoxContainer/HBoxContainer3/ContinueButton
+@onready var continue_button = $PanelContainer/HBoxContainer4/Menu/HBoxContainer3/ContinueButton
 
 func _ready():
 	if FileAccess.file_exists("user://savegame.save"):

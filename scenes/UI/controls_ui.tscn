@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=3 uid="uid://74dwo7ty5qh0"]
+
+[ext_resource type="Texture2D" uid="uid://c2e7lka3gubjh" path="res://ui_textures/button_prompts/Mouse_Left_Key_Dark.png" id="1_wkmfw"]
+[ext_resource type="Texture2D" uid="uid://hiu3j74bujxg" path="res://ui_textures/button_prompts/Mouse_Right_Key_Dark.png" id="2_8u3m1"]
+[ext_resource type="Texture2D" uid="uid://c0il5f4k0htme" path="res://ui_textures/button_prompts/Mouse_Middle_Key_Dark.png" id="3_rj3n3"]
+[ext_resource type="Texture2D" uid="uid://clk2piw7qc4ee" path="res://ui_textures/button_prompts/W_Key_Dark.png" id="4_tyts7"]
+[ext_resource type="Texture2D" uid="uid://bns1v0lj76bb6" path="res://ui_textures/button_prompts/A_Key_Dark.png" id="5_0ueaq"]
+[ext_resource type="Texture2D" uid="uid://cv6ofciv2el5k" path="res://ui_textures/button_prompts/S_Key_Dark.png" id="6_8mnhb"]
+[ext_resource type="Texture2D" uid="uid://bkw1847ewtu8c" path="res://ui_textures/button_prompts/D_Key_Dark.png" id="7_etehe"]
+[ext_resource type="Texture2D" uid="uid://x5rqb85n8tiy" path="res://ui_textures/button_prompts/Space_Key_Dark.png" id="8_qnulc"]
+
+[node name="ControlMargin" type="MarginContainer"]
+theme_override_constants/margin_top = 200
+
+[node name="Controls" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="MouseControls" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="LeftMouse" type="VBoxContainer" parent="Controls/MouseControls"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/MouseControls/LeftMouse"]
+layout_mode = 2
+text = "Create Link"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Controls/MouseControls/LeftMouse"]
+layout_mode = 2
+texture = ExtResource("1_wkmfw")
+stretch_mode = 3
+
+[node name="RightMouse" type="VBoxContainer" parent="Controls/MouseControls"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/MouseControls/RightMouse"]
+layout_mode = 2
+text = "Remove Link"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Controls/MouseControls/RightMouse"]
+layout_mode = 2
+texture = ExtResource("2_8u3m1")
+stretch_mode = 3
+
+[node name="Scroll" type="VBoxContainer" parent="Controls/MouseControls"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/MouseControls/Scroll"]
+layout_mode = 2
+text = "Change Link Type"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Controls/MouseControls/Scroll"]
+layout_mode = 2
+texture = ExtResource("3_rj3n3")
+stretch_mode = 3
+
+[node name="Movement" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Move" type="VBoxContainer" parent="Controls/Movement"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Controls/Movement/Move"]
+layout_mode = 2
+text = "Move"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/Movement/Move"]
+layout_mode = 2
+theme_override_constants/separation = -20
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Controls/Movement/Move/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="W_Key" type="TextureRect" parent="Controls/Movement/Move/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_tyts7")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls/Movement/Move/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -20
+alignment = 1
+
+[node name="A_Key" type="TextureRect" parent="Controls/Movement/Move/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_0ueaq")
+
+[node name="S_Key" type="TextureRect" parent="Controls/Movement/Move/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_8mnhb")
+
+[node name="D_Key" type="TextureRect" parent="Controls/Movement/Move/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_etehe")
+
+[node name="Jump" type="VBoxContainer" parent="Controls/Movement"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/Movement/Jump"]
+layout_mode = 2
+text = "Jump"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Controls/Movement/Jump"]
+layout_mode = 2
+texture = ExtResource("8_qnulc")
+stretch_mode = 3
