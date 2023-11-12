@@ -25,3 +25,4 @@ There are several ways two objects can be linked:
 * Wall and floor textures from [FreeStylized](https://freestylized.com). "Royalty free", not further specified
 * Box texture from [TextureCan](https://www.texturecan.com/details/609/). CC0
 * Footstep sound from WikiMedia. CC0
+* Button prompts from [Xelu's Prompts](https://thoseawesomeguys.com). CC0
