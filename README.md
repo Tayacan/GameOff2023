@@ -21,6 +21,7 @@ There are several ways two objects can be linked:
 * **Reverse link**: As the static forward link, but movement from one object is negated before being applied to the other.
 
 ## Assets
-* UI assets from [Wenrexia](https://opengameart.org/content/assets-ui-minimalism-scifi).
-* Wall and floor textures from [FreeStylized](https://freestylized.com).
-* Box texture from [TextureCan](https://www.texturecan.com/details/609/).
+* UI assets from [Wenrexia](https://opengameart.org/content/assets-ui-minimalism-scifi). CC0
+* Wall and floor textures from [FreeStylized](https://freestylized.com). "Royalty free", not further specified
+* Box texture from [TextureCan](https://www.texturecan.com/details/609/). CC0
+* Footstep sound from WikiMedia. CC0
