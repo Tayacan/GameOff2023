@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var footstep_audio = $AudioStreamPlayer
+
 
 @export var SPEED = 5.0
 @export var PUSH_SPEED = 2.5
@@ -76,3 +78,8 @@ func _on_body_entered_push_area(body):
 func _on_body_exited_push_area(body):
 	if body is AnimatableBody3D:
 		obj_to_push = null
+
+
+func _on_foot_step_timer_timeout():
+	if velocity.length() > 0.2 and is_on_floor():
+		footstep_audio.play()

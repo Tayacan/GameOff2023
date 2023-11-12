@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt16jtq300lur"]
+[gd_scene load_steps=8 format=3 uid="uid://bt16jtq300lur"]
 
 [ext_resource type="Script" path="res://player/PlayerController.gd" id="1_t4f5s"]
 [ext_resource type="Script" path="res://player/LookRay.gd" id="2_j518k"]
 [ext_resource type="Script" path="res://player/links.gd" id="3_4tyvl"]
+[ext_resource type="AudioStream" uid="uid://d0tlwc72u5hc7" path="res://player/footstep.ogg" id="4_06uoe"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wyxfp"]
 
@@ -42,9 +43,19 @@ script = ExtResource("3_4tyvl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PushArea"]
 shape = SubResource("CylinderShape3D_blw1q")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_06uoe")
+volume_db = -25.0
+pitch_scale = 3.63
+
+[node name="FootStepTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_started_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_stopped_looking_at_item"]
 [connection signal="body_entered" from="PushArea" to="." method="_on_body_entered_push_area"]
 [connection signal="body_exited" from="PushArea" to="." method="_on_body_exited_push_area"]
+[connection signal="timeout" from="FootStepTimer" to="." method="_on_foot_step_timer_timeout"]
