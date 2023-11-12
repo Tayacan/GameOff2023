@@ -1,16 +1,19 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bb4vhnhw8xut3"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://bb4vhnhw8xut3"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifgpx"]
-sky_top_color = Color(0.345098, 0.596078, 0.843137, 1)
+[ext_resource type="Texture2D" uid="uid://bsndek0ncmo0w" path="res://materials/sky/Sky2_w_clouds.png" id="1_3havh"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cyxlc"]
+panorama = ExtResource("1_3havh")
 
 [sub_resource type="Sky" id="Sky_qti6a"]
-sky_material = SubResource("ProceduralSkyMaterial_ifgpx")
+sky_material = SubResource("PanoramaSkyMaterial_cyxlc")
 
 [resource]
 background_mode = 2
 sky = SubResource("Sky_qti6a")
 ambient_light_color = Color(0.898039, 0.894118, 0.631373, 1)
 ambient_light_sky_contribution = 0.8
+reflected_light_source = 2
 tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.09
