@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbthujb2sqauv"]
+[gd_scene load_steps=13 format=3 uid="uid://dbthujb2sqauv"]
 
 [ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_obs2e"]
 [ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_ma7y8"]
 [ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="3_q4cjv"]
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="4_6e8gy"]
-[ext_resource type="Material" uid="uid://c6t3ysmetu6ig" path="res://materials/orange.tres" id="5_xdb40"]
-[ext_resource type="Material" uid="uid://d2ridmx1me6qx" path="res://materials/glass.tres" id="6_qgpsu"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="7_es5i1"]
+[ext_resource type="PackedScene" uid="uid://bjaqy7nmvlb3t" path="res://evironment/blocks/floor_tile.tscn" id="8_1lgxb"]
 [ext_resource type="Material" uid="uid://ddnbn0mk70cnf" path="res://materials/win_area.tres" id="8_jv33b"]
 [ext_resource type="Script" path="res://scenes/WinArea.gd" id="9_0cf4q"]
+[ext_resource type="PackedScene" uid="uid://drvtot28bflg8" path="res://evironment/blocks/wall_tile.tscn" id="9_o2nak"]
+[ext_resource type="PackedScene" uid="uid://bl4kqaohsstfb" path="res://evironment/blocks/wall_tile_window.tscn" id="10_qdgdn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wvkol"]
 material = ExtResource("8_jv33b")
@@ -36,77 +37,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03251, 8)
 
 [node name="Map" type="Node3D" parent="."]
 
-[node name="Walls" type="CSGCombiner3D" parent="Map"]
-material_override = ExtResource("5_xdb40")
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(10, 1, 22)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
-size = Vector3(10, 2, 22)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
-size = Vector3(1, 4, 22)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, 11)
-size = Vector3(1, 4, 22)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, -11)
-size = Vector3(1, 4, 22)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-size = Vector3(1, 1, 22)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.75, 0)
-size = Vector3(1, 0.5, 22)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 0)
-size = Vector3(1, 4, 22)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -10.5)
-size = Vector3(1, 4, 1)
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 10.5)
-size = Vector3(1, 4, 1)
-
-[node name="Subtract" type="CSGCombiner3D" parent="Map/Walls"]
-operation = 2
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Walls/Subtract"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
-size = Vector3(9, 2, 6)
-
-[node name="GlassWalls" type="CSGCombiner3D" parent="Map"]
-material_override = ExtResource("6_qgpsu")
-use_collision = true
-collision_layer = 2
-collision_mask = 2
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/GlassWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 0)
-size = Vector3(1, 2, 20)
-
 [node name="Boxes" type="Node3D" parent="Map"]
 
 [node name="Box" parent="Map/Boxes" instance=ExtResource("7_es5i1")]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -2, 0, 5)
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1, 0, 5)
 
 [node name="Box2" parent="Map/Boxes" instance=ExtResource("7_es5i1")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 12.06, 1, 5)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 11.06, 1, 5)
 
 [node name="WinArea" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.5, -10.5)
 mesh = SubResource("BoxMesh_wvkol")
 script = ExtResource("9_0cf4q")
 
@@ -115,5 +55,275 @@ script = ExtResource("9_0cf4q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/WinArea/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5)
 shape = SubResource("BoxShape3D_b6fdt")
+
+[node name="Floor" type="Node3D" parent="Map"]
+
+[node name="floor_tile" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+
+[node name="floor_tile2" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="floor_tile3" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="floor_tile4" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="floor_tile5" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 0)
+
+[node name="floor_tile6" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
+
+[node name="floor_tile7" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="floor_tile8" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+
+[node name="floor_tile9" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+
+[node name="floor_tile10" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, -3)
+
+[node name="floor_tile11" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
+
+[node name="floor_tile12" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+
+[node name="floor_tile17" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1, 0)
+
+[node name="floor_tile18" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3)
+
+[node name="floor_tile_vert" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 9, 0, 2.62268e-07)
+
+[node name="floor_tile_vert2" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 12, 0, 0)
+
+[node name="floor_tile_vert9" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 15, 0, -2.62268e-07)
+
+[node name="floor_tile_vert3" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 6, 0, -3)
+
+[node name="floor_tile_vert4" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 6, 0, 0)
+
+[node name="floor_tile_vert5" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, 9, 0, -6)
+
+[node name="floor_tile_vert10" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, 12, 0, -6)
+
+[node name="floor_tile_vert6" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, 6, 0, -6)
+
+[node name="floor_tile_vert7" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 15, 0, -3)
+
+[node name="floor_tile_vert8" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 15, 0, 0)
+
+[node name="floor_tile19" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1, 0)
+
+[node name="floor_tile20" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+
+[node name="floor_tile25" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="floor_tile26" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="floor_tile27" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="floor_tile28" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
+
+[node name="floor_tile29" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="floor_tile30" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+
+[node name="floor_tile31" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="floor_tile32" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
+
+[node name="floor_tile33" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 9)
+
+[node name="floor_tile34" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9)
+
+[node name="floor_tile35" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 9)
+
+[node name="floor_tile36" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 9)
+
+[node name="floor_tile21" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+
+[node name="floor_tile22" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1, -3)
+
+[node name="floor_tile23" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -6)
+
+[node name="floor_tile24" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1, -3)
+
+[node name="floor_tile13" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="floor_tile14" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="floor_tile15" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="floor_tile37" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
+
+[node name="floor_tile38" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -9)
+
+[node name="floor_tile39" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -9)
+
+[node name="floor_tile40" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -9)
+
+[node name="floor_tile41" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="floor_tile42" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+
+[node name="floor_tile16" parent="Map/Floor" instance=ExtResource("8_1lgxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="Wall1" type="Node3D" parent="Map"]
+
+[node name="wall_tile" parent="Map/Wall1" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="wall_tile2" parent="Map/Wall1" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="wall_tile3" parent="Map/Wall1" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="wall_tile5" parent="Map/Wall1" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+
+[node name="wall_tile6" parent="Map/Wall1" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="wall_tile7" parent="Map/Wall1" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="wall_tile4" parent="Map/Wall1" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
+
+[node name="Wall2" type="Node3D" parent="Map"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12, 0, -3)
+
+[node name="wall_tile" parent="Map/Wall2" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="wall_tile2" parent="Map/Wall2" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="wall_tile3" parent="Map/Wall2" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="wall_tile5" parent="Map/Wall2" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+
+[node name="wall_tile6" parent="Map/Wall2" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="wall_tile7" parent="Map/Wall2" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="wall_tile4" parent="Map/Wall2" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
+
+[node name="WindowWall" type="Node3D" parent="Map"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, -3)
+
+[node name="wall_tile2" parent="Map/WindowWall" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="wall_tile5" parent="Map/WindowWall" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+
+[node name="wall_tile7" parent="Map/WindowWall" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="wall_tile4" parent="Map/WindowWall" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
+
+[node name="wall_tile_window" parent="Map/WindowWall" instance=ExtResource("10_qdgdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="wall_tile_window2" parent="Map/WindowWall" instance=ExtResource("10_qdgdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2.38419e-07)
+
+[node name="wall_tile_window3" parent="Map/WindowWall" instance=ExtResource("10_qdgdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="Wall3" type="Node3D" parent="Map"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 0, -9)
+
+[node name="wall_tile" parent="Map/Wall3" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="wall_tile2" parent="Map/Wall3" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="wall_tile3" parent="Map/Wall3" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="wall_tile6" parent="Map/Wall3" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="wall_tile7" parent="Map/Wall3" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="wall_tile4" parent="Map/Wall3" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
+
+[node name="Wall4" type="Node3D" parent="Map"]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 6, 0, 6)
+
+[node name="wall_tile" parent="Map/Wall4" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="wall_tile2" parent="Map/Wall4" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="wall_tile3" parent="Map/Wall4" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="wall_tile6" parent="Map/Wall4" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="wall_tile7" parent="Map/Wall4" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="wall_tile4" parent="Map/Wall4" instance=ExtResource("9_o2nak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
 
 [connection signal="body_entered" from="Map/WinArea/Area3D" to="Map/WinArea" method="_on_area_3d_body_entered"]
