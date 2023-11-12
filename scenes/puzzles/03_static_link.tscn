@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbthujb2sqauv"]
+[gd_scene load_steps=10 format=3 uid="uid://dbthujb2sqauv"]
 
 [ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_obs2e"]
 [ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_ma7y8"]
@@ -6,16 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="4_6e8gy"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="7_es5i1"]
 [ext_resource type="PackedScene" uid="uid://bjaqy7nmvlb3t" path="res://evironment/blocks/floor_tile.tscn" id="8_1lgxb"]
-[ext_resource type="Material" uid="uid://ddnbn0mk70cnf" path="res://materials/win_area.tres" id="8_jv33b"]
-[ext_resource type="Script" path="res://scenes/WinArea.gd" id="9_0cf4q"]
+[ext_resource type="PackedScene" uid="uid://cghd73ms2x6of" path="res://scenes/win_area.tscn" id="9_6qilo"]
 [ext_resource type="PackedScene" uid="uid://drvtot28bflg8" path="res://evironment/blocks/wall_tile.tscn" id="9_o2nak"]
 [ext_resource type="PackedScene" uid="uid://bl4kqaohsstfb" path="res://evironment/blocks/wall_tile_window.tscn" id="10_qdgdn"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_wvkol"]
-material = ExtResource("8_jv33b")
-size = Vector3(3, 3, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b6fdt"]
 
 [node name="Puzzle02" type="Node3D"]
 
@@ -44,17 +37,6 @@ transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 
 
 [node name="Box2" parent="Map/Boxes" instance=ExtResource("7_es5i1")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 11.06, 1, 5)
-
-[node name="WinArea" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.5, -10.5)
-mesh = SubResource("BoxMesh_wvkol")
-script = ExtResource("9_0cf4q")
-
-[node name="Area3D" type="Area3D" parent="Map/WinArea"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/WinArea/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5)
-shape = SubResource("BoxShape3D_b6fdt")
 
 [node name="Floor" type="Node3D" parent="Map"]
 
@@ -326,4 +308,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 [node name="wall_tile4" parent="Map/Wall4" instance=ExtResource("9_o2nak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
 
-[connection signal="body_entered" from="Map/WinArea/Area3D" to="Map/WinArea" method="_on_area_3d_body_entered"]
+[node name="WinArea" parent="Map" instance=ExtResource("9_6qilo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -12)

@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node
 
 @export_file() var next_level = "res://scenes/UI/winscreen.tscn"
 
