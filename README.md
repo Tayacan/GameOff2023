@@ -22,7 +22,7 @@ There are several ways two objects can be linked:
 
 ## Assets
 * UI assets from [Wenrexia](https://opengameart.org/content/assets-ui-minimalism-scifi). CC0
-* Wall and floor textures from [FreeStylized](https://freestylized.com). "Royalty free", not further specified
+* Wall and floor textures from [FreeStylized](https://freestylized.com). "Royalty free", not further specified - have given permission to share via email.
 * Box texture from [TextureCan](https://www.texturecan.com/details/609/). CC0
 * Footstep sound from WikiMedia. CC0
 * Button prompts from [Xelu's Prompts](https://thoseawesomeguys.com). CC0
