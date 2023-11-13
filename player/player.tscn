@@ -49,7 +49,7 @@ volume_db = -25.0
 pitch_scale = 3.63
 
 [node name="FootStepTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.45
 autostart = true
 
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_started_looking_at_item"]

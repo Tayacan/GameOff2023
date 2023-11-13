@@ -25,10 +25,6 @@ func _physics_process(_delta):
 	# Calculate velocities
 	var combined_vel_1 = obj_1_vel - (obj_2_vel * (obj_2.mass / obj_1.mass))
 	var combined_vel_2 = obj_2_vel - (obj_1_vel * (obj_1.mass / obj_2.mass))
-	print_debug(
-		"comb. vel 1: " + str(combined_vel_1) + "\n" +\
-		"comb. vel 2: " + str(combined_vel_2)
-	)
 	
 	# test movements one axis at a time
 	var col1 = obj_1.move_and_collide(Vector3(combined_vel_1.x, 0, 0), true)
