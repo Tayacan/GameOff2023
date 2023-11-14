@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
+enum ControlMode { Walking, MovingBox }
+var control_mode = ControlMode.Walking
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var footstep_audio = $AudioStreamPlayer
-
 
 @export var SPEED = 5.0
 @export var PUSH_SPEED = 2.5
@@ -23,6 +25,15 @@ func _unhandled_input(event):
 		camera_rotation(event.relative)
 
 func _physics_process(delta):
+	if control_mode == ControlMode.Walking:
+		walking(delta)
+	elif control_mode == ControlMode.MovingBox:
+		moving_box(delta)
+
+func moving_box(delta):
+	pass
+
+func walking(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
