@@ -52,8 +52,10 @@ pitch_scale = 3.63
 wait_time = 0.45
 autostart = true
 
+[connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="." method="_on_look_ray_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_started_looking_at_item"]
+[connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="." method="_on_look_ray_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_stopped_looking_at_item"]
 [connection signal="body_entered" from="PushArea" to="." method="_on_body_entered_push_area"]

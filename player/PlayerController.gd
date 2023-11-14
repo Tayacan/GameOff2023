@@ -16,6 +16,7 @@ var current_speed = 0
 var mouse_move : Vector2 = Vector2(0, 0)
 
 var obj_to_push : AnimatableBody3D = null
+var obj_looking_at = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -31,9 +32,16 @@ func _physics_process(delta):
 		moving_box(delta)
 
 func moving_box(delta):
-	pass
+	if Input.is_action_just_pressed("grab"):
+		control_mode = ControlMode.Walking
 
 func walking(delta):
+	# Mode switching
+	if Input.is_action_just_pressed("grab"):
+		print_debug("Grab")
+		if obj_looking_at:
+			control_mode = ControlMode.MovingBox
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -94,3 +102,13 @@ func _on_body_exited_push_area(body):
 func _on_foot_step_timer_timeout():
 	if velocity.length() > 0.2 and is_on_floor():
 		footstep_audio.play()
+
+
+func _on_look_ray_started_looking_at_item(body):
+	if control_mode == ControlMode.Walking:
+		obj_looking_at = body
+
+
+func _on_look_ray_stopped_looking_at_item(body):
+	if control_mode == ControlMode.Walking and obj_looking_at == body:
+		obj_looking_at = null
