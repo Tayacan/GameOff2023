@@ -2,16 +2,13 @@
 
 [ext_resource type="Script" path="res://boxes/LinkableBox.gd" id="1_0i512"]
 [ext_resource type="PackedScene" uid="uid://coxf5phni3ow1" path="res://boxes/box_model.tscn" id="2_fqpci"]
+[ext_resource type="Material" uid="uid://ckth7ob0n4cwl" path="res://materials/grab_indicator/swirls_mat.tres" id="3_t3pik"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrk3p"]
 margin = 0.001
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1tuq"]
-transparency = 1
-albedo_color = Color(0, 0.67451, 0.67451, 0.313726)
-
 [sub_resource type="SphereMesh" id="SphereMesh_btyp6"]
-material = SubResource("StandardMaterial3D_h1tuq")
+material = ExtResource("3_t3pik")
 radius = 1.0
 height = 2.0
 

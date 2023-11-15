@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ckth7ob0n4cwl"]
+
+[ext_resource type="Shader" uid="uid://bst7rc5psry86" path="res://materials/grab_indicator/swirls.tres" id="1_3nrwy"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3nrwy")
+shader_parameter/Color = Color(0.356863, 0.678431, 0.658824, 1)
+shader_parameter/Speed = 0.1
+shader_parameter/UVScale = 1.0
+shader_parameter/Glow = 5.0
