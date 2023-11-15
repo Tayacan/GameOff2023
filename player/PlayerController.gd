@@ -35,11 +35,18 @@ func _physics_process(delta):
 func moving_box(delta):
 	if Input.is_action_just_pressed("grab"):
 		control_mode = ControlMode.Walking
-	
+	if not obj_looking_at or transform.origin.distance_to(obj_looking_at.transform.origin) >= MAX_PUSH_RANGE:
+		control_mode = ControlMode.Walking
+		
+	var t = Transform3D()
+	t.origin = transform.origin
+	var target_point = obj_looking_at.transform.origin
+	target_point.y = t.origin.y
+	t = t.looking_at(target_point)
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (t.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var vel = direction * delta * PUSH_SPEED
-	push(vel)
+	obj_looking_at.add_velocity(vel)
 
 func walking(delta):
 	# Mode switching
