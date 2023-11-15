@@ -20,6 +20,16 @@ func _physics_process(delta):
 	if link:
 		wants_move.emit(velocity)
 	else:
+		var col = move_and_collide(Vector3(velocity.x, 0, 0), true)
+		if col:
+			velocity.x = 0
+		col = move_and_collide(Vector3(0, velocity.y, 0), true)
+		if col:
+			velocity.y = 0
+			y_vel = 0
+		col = move_and_collide(Vector3(0, 0, velocity.z), true)
+		if col:
+			velocity.z = 0
 		move_and_collide(velocity)
 	
 	velocity = Vector3(0, 0, 0)
