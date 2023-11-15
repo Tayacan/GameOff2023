@@ -41,10 +41,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("grab"):
 			obj_looking_at.deselect()
 			control_mode = ControlMode.Walking
-#		if not obj_looking_at or transform.origin.distance_to(obj_looking_at.transform.origin) > MAX_PUSH_RANGE:
-#			if obj_looking_at:
-#				obj_looking_at.deselect()
-#			control_mode = ControlMode.Walking
 
 func moving_box(mouse_delta):
 	var t = Transform3D()
