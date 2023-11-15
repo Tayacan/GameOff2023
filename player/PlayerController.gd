@@ -72,7 +72,7 @@ func walking(delta):
 	else:
 		current_speed = SPEED
 	
-#	var current_position = transform.origin
+	var current_position = transform.origin
 	if is_on_floor():
 		velocity.x = lerp(velocity.x, direction.x * current_speed, delta * 20)
 		velocity.z = lerp(velocity.z, direction.z * current_speed, delta * 20)
@@ -81,7 +81,7 @@ func walking(delta):
 		velocity.z = lerp(velocity.z, direction.z * current_speed, delta * 2)
 	
 	move_and_slide()
-#	push(transform.origin - current_position)
+	push(transform.origin - current_position)
 
 func camera_rotation(mouse_delta: Vector2):
 	head.rotate_y(-mouse_delta.x * mouse_sensitivity * 0.001)
@@ -93,8 +93,8 @@ func camera_rotation(mouse_delta: Vector2):
 	)
 
 func push(vel: Vector3):
-	if obj_looking_at and transform.origin.distance_to(obj_looking_at.transform.origin) < MAX_PUSH_RANGE:
-			obj_looking_at.add_velocity(vel)
+	if is_pushing(vel):
+		obj_to_push.add_velocity(vel)
 
 func is_pushing(dir: Vector3) -> bool:
 	if obj_to_push and obj_to_push.has_method("add_velocity"):
