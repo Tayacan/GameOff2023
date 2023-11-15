@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/WinArea.gd" id="2_t6kd0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6fdt"]
-size = Vector3(1.5, 1.5, 1.5)
+size = Vector3(0.75, 0.75, 0.75)
 
 [node name="WinArea" type="Node3D"]
 script = ExtResource("2_t6kd0")
@@ -12,10 +12,10 @@ script = ExtResource("2_t6kd0")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 shape = SubResource("BoxShape3D_b6fdt")
 
 [node name="box" parent="." instance=ExtResource("1_yhkp3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

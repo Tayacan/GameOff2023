@@ -1,18 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://ijgj4cyrxngg"]
+[gd_scene load_steps=6 format=3 uid="uid://ijgj4cyrxngg"]
 
 [ext_resource type="Script" path="res://boxes/LinkableBox.gd" id="1_0i512"]
 [ext_resource type="PackedScene" uid="uid://coxf5phni3ow1" path="res://boxes/box_model.tscn" id="2_fqpci"]
+[ext_resource type="Material" uid="uid://ckth7ob0n4cwl" path="res://materials/grab_indicator/swirls_mat.tres" id="3_t3pik"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrk3p"]
 margin = 0.001
-size = Vector3(2, 2, 2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_btyp6"]
+material = ExtResource("3_t3pik")
+radius = 1.0
+height = 2.0
 
 [node name="Box" type="AnimatableBody3D" groups=["linkable"]]
 script = ExtResource("1_0i512")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_qrk3p")
 
 [node name="box" parent="." instance=ExtResource("2_fqpci")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="SelectSphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = SubResource("SphereMesh_btyp6")

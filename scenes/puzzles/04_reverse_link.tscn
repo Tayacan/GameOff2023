@@ -276,8 +276,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -14)
 [node name="flowerpot2" parent="Map/Flowers" instance=ExtResource("9_lwree")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
 
+[node name="flowerpot5" parent="Map/Flowers" instance=ExtResource("9_lwree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -14)
+
 [node name="flowerpot3" parent="Map/Flowers" instance=ExtResource("9_lwree")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
 
+[node name="flowerpot4" parent="Map/Flowers" instance=ExtResource("9_lwree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -14)
+
 [node name="WinArea" parent="Map" instance=ExtResource("10_obh7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.96966, 0, -5.22271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96966, 0, -4.22271)
