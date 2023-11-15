@@ -124,11 +124,11 @@ func _on_foot_step_timer_timeout():
 		footstep_audio.play()
 
 
-func _on_look_ray_started_looking_at_item(body):
+func _on_select_ray_started_looking_at_item(body):
 	if control_mode == ControlMode.Walking:
 		obj_looking_at = body
 
 
-func _on_look_ray_stopped_looking_at_item(body):
+func _on_select_ray_stopped_looking_at_item(body):
 	if control_mode == ControlMode.Walking and obj_looking_at == body:
 		obj_looking_at = null

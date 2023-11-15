@@ -35,6 +35,11 @@ fov = 60.0
 target_position = Vector3(0, 0, -10)
 script = ExtResource("2_j518k")
 
+[node name="SelectRay" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -10)
+collision_mask = 3
+script = ExtResource("2_j518k")
+
 [node name="Linker" type="Node3D" parent="."]
 script = ExtResource("3_4tyvl")
 
@@ -52,12 +57,12 @@ pitch_scale = 3.63
 wait_time = 0.45
 autostart = true
 
-[connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="." method="_on_look_ray_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_started_looking_at_item"]
-[connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="." method="_on_look_ray_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_stopped_looking_at_item"]
+[connection signal="started_looking_at_item" from="Head/Camera3D/SelectRay" to="." method="_on_select_ray_started_looking_at_item"]
+[connection signal="stopped_looking_at_item" from="Head/Camera3D/SelectRay" to="." method="_on_select_ray_stopped_looking_at_item"]
 [connection signal="body_entered" from="PushArea" to="." method="_on_body_entered_push_area"]
 [connection signal="body_exited" from="PushArea" to="." method="_on_body_exited_push_area"]
 [connection signal="timeout" from="FootStepTimer" to="." method="_on_foot_step_timer_timeout"]
