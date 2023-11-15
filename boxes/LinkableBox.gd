@@ -62,3 +62,9 @@ func get_glow() -> StandardMaterial3D:
 		if child.has_method('get_glow_material'):
 			return child.get_glow_material()
 	return null
+
+func select():
+	$SelectSphere.show()
+
+func deselect():
+	$SelectSphere.hide()

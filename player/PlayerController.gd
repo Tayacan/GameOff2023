@@ -34,8 +34,11 @@ func _physics_process(delta):
 
 func moving_box(delta):
 	if Input.is_action_just_pressed("grab"):
+		obj_looking_at.deselect()
 		control_mode = ControlMode.Walking
 	if not obj_looking_at or transform.origin.distance_to(obj_looking_at.transform.origin) > MAX_PUSH_RANGE:
+		if obj_looking_at:
+			obj_looking_at.deselect()
 		control_mode = ControlMode.Walking
 
 	var t = Transform3D()
@@ -54,8 +57,8 @@ func moving_box(delta):
 func walking(delta):
 	# Mode switching
 	if Input.is_action_just_pressed("grab"):
-		print_debug("Grab")
 		if obj_looking_at:
+			obj_looking_at.select()
 			control_mode = ControlMode.MovingBox
 	
 	# Add the gravity.
