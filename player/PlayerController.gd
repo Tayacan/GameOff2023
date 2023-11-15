@@ -14,7 +14,6 @@ var control_mode = ControlMode.Walking
 var current_speed = 0
 
 @export var mouse_sensitivity = 1
-var mouse_move : Vector2 = Vector2(0, 0)
 
 var obj_to_push : AnimatableBody3D = null
 var obj_looking_at = null
