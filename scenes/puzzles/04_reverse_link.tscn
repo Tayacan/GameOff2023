@@ -280,4 +280,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
 
 [node name="WinArea" parent="Map" instance=ExtResource("10_obh7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.96966, 0, -5.22271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96966, 0, -4.22271)
