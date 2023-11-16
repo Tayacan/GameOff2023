@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt16jtq300lur"]
+[gd_scene load_steps=9 format=3 uid="uid://bt16jtq300lur"]
 
 [ext_resource type="Script" path="res://player/PlayerController.gd" id="1_t4f5s"]
 [ext_resource type="Script" path="res://player/LookRay.gd" id="2_j518k"]
 [ext_resource type="Script" path="res://player/links.gd" id="3_4tyvl"]
 [ext_resource type="AudioStream" uid="uid://d0tlwc72u5hc7" path="res://player/footstep.ogg" id="4_06uoe"]
+[ext_resource type="Texture2D" uid="uid://b88kkpftuxr3i" path="res://player/Crosshair.svg" id="5_qd6hx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wyxfp"]
 
@@ -56,6 +57,18 @@ pitch_scale = 3.63
 [node name="FootStepTimer" type="Timer" parent="."]
 wait_time = 0.45
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_qd6hx")
+stretch_mode = 3
 
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_started_looking_at_item"]
