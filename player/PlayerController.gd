@@ -8,33 +8,32 @@ var control_mode = ControlMode.Walking
 @onready var footstep_audio = $AudioStreamPlayer
 
 @export var SPEED = 5.0
-@export var PUSH_SPEED = 2.5
+@export var PUSH_SPEED = 3.5
 @export var JUMP_VELOCITY = 4.5
 @export var MAX_PUSH_RANGE = 10
 var current_speed = 0
 
 @export var mouse_sensitivity = 1
+const mouse_factor = 0.001
 
 var obj_to_push : AnimatableBody3D = null
 var obj_looking_at : AnimatableBody3D = null
-var obj_vec : Vector3 = Vector3(0, 0, 0)
 var obj_dist : float = 0
+
+var mouse_delta := Vector2(0, 0)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
-		if control_mode == ControlMode.Walking:
-			camera_rotation(event.relative)
-		elif control_mode == ControlMode.MovingBox:
-			var factor = 0.0005
-			camera_rotation(event.relative, factor)
-			moving_box(event.relative, factor)
+		mouse_delta += event.relative
 
 func _physics_process(delta):
 	walking(delta)
 	if control_mode == ControlMode.Walking:
+		camera_rotation(mouse_delta)
+		mouse_delta = Vector2(0, 0)
 		# Mode switching
 		if Input.is_action_just_pressed("grab"):
 			if obj_looking_at:
@@ -42,28 +41,30 @@ func _physics_process(delta):
 				obj_dist = transform.origin.distance_to(obj_looking_at.transform.origin)
 				control_mode = ControlMode.MovingBox
 	elif control_mode == ControlMode.MovingBox:
+		var desired_x_angle = -mouse_delta.x * mouse_sensitivity * mouse_factor
+		var max_box_move = PUSH_SPEED * delta
+		var dist = transform.origin.distance_to(obj_looking_at.transform.origin)
+		
+		var angle = desired_x_angle
+		var desired_move = angle * dist
+		if abs(desired_move) > max_box_move:
+			angle = sign(desired_move) * max_box_move / dist
+		
+		camera_rotation_angles(angle, -mouse_delta.y * mouse_sensitivity * mouse_factor)
+		box_move(angle)
+		mouse_delta = Vector2(0, 0)
+		
 		# Mode switching
 		if Input.is_action_just_pressed("grab"):
 			obj_looking_at.deselect()
 			control_mode = ControlMode.Walking
-		# Box moving
-		var dist = transform.origin.distance_to(obj_looking_at.transform.origin)
-		var dist_delta = obj_dist - dist
-		# Correct for floating point errors changing the distance
-		obj_looking_at.add_velocity(transform.origin.direction_to(obj_looking_at.transform.origin) * dist_delta)
-		# Apply collected mouse movement
-		obj_looking_at.add_velocity(obj_vec)
-		# Reset mouse movement
-		obj_vec = Vector3(0, 0, 0)
 
-func moving_box(mouse_delta, factor):
-	obj_vec += calc_box_move(obj_looking_at.transform.origin + obj_vec, -mouse_delta.x * factor)
-
-func calc_box_move(box_position: Vector3, angle_radians: float) -> Vector3:
+func box_move(angle_radians: float):
+	var box_position = obj_looking_at.transform.origin
 	var dir = box_position - transform.origin
 	var rotated_dir = dir.rotated(Vector3(0, 1, 0), angle_radians)
 	var new_position = transform.origin + rotated_dir
-	return new_position - box_position
+	obj_looking_at.add_velocity(new_position - box_position)
 
 func walking(delta):
 	# Add the gravity.
@@ -94,9 +95,13 @@ func walking(delta):
 	move_and_slide()
 	push(transform.origin - current_position)
 
-func camera_rotation(mouse_delta: Vector2, factor: float = 0.001):
-	head.rotate_y(-mouse_delta.x * mouse_sensitivity * factor)
-	camera.rotate_x(-mouse_delta.y * mouse_sensitivity * factor)
+func camera_rotation(delta: Vector2):
+	camera_rotation_angles(-delta.x * mouse_sensitivity * mouse_factor,
+						   -delta.y * mouse_sensitivity * mouse_factor)
+
+func camera_rotation_angles(angle_y : float, angle_x : float):
+	head.rotate_y(angle_y)
+	camera.rotate_x(angle_x)
 	camera.rotation.x = clamp(
 		camera.rotation.x,
 		-1.1,
