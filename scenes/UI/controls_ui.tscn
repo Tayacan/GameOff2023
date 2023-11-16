@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://74dwo7ty5qh0"]
+[gd_scene load_steps=10 format=3 uid="uid://74dwo7ty5qh0"]
 
 [ext_resource type="Texture2D" uid="uid://c2e7lka3gubjh" path="res://ui_textures/button_prompts/Mouse_Left_Key_Dark.png" id="1_wkmfw"]
 [ext_resource type="Texture2D" uid="uid://hiu3j74bujxg" path="res://ui_textures/button_prompts/Mouse_Right_Key_Dark.png" id="2_8u3m1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cv6ofciv2el5k" path="res://ui_textures/button_prompts/S_Key_Dark.png" id="6_8mnhb"]
 [ext_resource type="Texture2D" uid="uid://bkw1847ewtu8c" path="res://ui_textures/button_prompts/D_Key_Dark.png" id="7_etehe"]
 [ext_resource type="Texture2D" uid="uid://x5rqb85n8tiy" path="res://ui_textures/button_prompts/Space_Key_Dark.png" id="8_qnulc"]
+[ext_resource type="Texture2D" uid="uid://ctr7d1yqi37v2" path="res://ui_textures/button_prompts/F_Key_Dark.png" id="9_5epg6"]
 
 [node name="ControlMargin" type="MarginContainer"]
 theme_override_constants/margin_top = 200
@@ -74,7 +75,7 @@ theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Move" type="VBoxContainer" parent="Controls/Movement"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -114,7 +115,7 @@ layout_mode = 2
 texture = ExtResource("7_etehe")
 
 [node name="Jump" type="VBoxContainer" parent="Controls/Movement"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 alignment = 1
 
@@ -126,4 +127,19 @@ horizontal_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Controls/Movement/Jump"]
 layout_mode = 2
 texture = ExtResource("8_qnulc")
+stretch_mode = 3
+
+[node name="Grab" type="VBoxContainer" parent="Controls/Movement"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/Movement/Grab"]
+layout_mode = 2
+text = "Grab"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Controls/Movement/Grab"]
+layout_mode = 2
+texture = ExtResource("9_5epg6")
 stretch_mode = 3
