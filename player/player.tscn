@@ -34,11 +34,14 @@ fov = 60.0
 
 [node name="LookRay" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -10)
+debug_shape_thickness = 1
 script = ExtResource("2_j518k")
 
 [node name="SelectRay" type="RayCast3D" parent="Head/Camera3D"]
-target_position = Vector3(0, 0, -10)
+target_position = Vector3(0, 0, -3)
 collision_mask = 3
+debug_shape_custom_color = Color(0.807843, 0.380392, 0.129412, 1)
+debug_shape_thickness = 3
 script = ExtResource("2_j518k")
 
 [node name="Linker" type="Node3D" parent="."]

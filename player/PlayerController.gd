@@ -16,7 +16,9 @@ var current_speed = 0
 @export var mouse_sensitivity = 1
 
 var obj_to_push : AnimatableBody3D = null
-var obj_looking_at = null
+var obj_looking_at : AnimatableBody3D = null
+var obj_vec : Vector3 = Vector3(0, 0, 0)
+var obj_dist : float = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -26,39 +28,44 @@ func _unhandled_input(event):
 		if control_mode == ControlMode.Walking:
 			camera_rotation(event.relative)
 		elif control_mode == ControlMode.MovingBox:
-			moving_box(event.relative)
+			var factor = 0.0005
+			camera_rotation(event.relative, factor)
+			moving_box(event.relative, factor)
 
 func _physics_process(delta):
 	walking(delta)
 	if control_mode == ControlMode.Walking:
-	# Mode switching
+		# Mode switching
 		if Input.is_action_just_pressed("grab"):
 			if obj_looking_at:
 				obj_looking_at.select()
+				obj_dist = transform.origin.distance_to(obj_looking_at.transform.origin)
 				control_mode = ControlMode.MovingBox
 	elif control_mode == ControlMode.MovingBox:
+		# Mode switching
 		if Input.is_action_just_pressed("grab"):
 			obj_looking_at.deselect()
 			control_mode = ControlMode.Walking
+		# Box moving
+		var dist = transform.origin.distance_to(obj_looking_at.transform.origin)
+		var dist_delta = obj_dist - dist
+		# Correct for floating point errors changing the distance
+		obj_looking_at.add_velocity(transform.origin.direction_to(obj_looking_at.transform.origin) * dist_delta)
+		# Apply collected mouse movement
+		obj_looking_at.add_velocity(obj_vec)
+		# Reset mouse movement
+		obj_vec = Vector3(0, 0, 0)
 
-func moving_box(mouse_delta):
-	var t = Transform3D()
-	t.origin = transform.origin
-	var target_point = obj_looking_at.transform.origin
-	target_point.y = t.origin.y
-	t = t.looking_at(target_point)
-	var input_dir = mouse_delta
-	var direction = (t.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var vel = direction * PUSH_SPEED * 0.005
-	
-	var old_distance = transform.origin.distance_to(obj_looking_at.transform.origin + obj_looking_at.velocity)
-	var new_pos = obj_looking_at.transform.origin + obj_looking_at.velocity + vel
-	var new_distance = transform.origin.distance_to(new_pos)
-	if new_distance <= MAX_PUSH_RANGE or new_distance <= old_distance:
-		obj_looking_at.add_velocity(vel)
+func moving_box(mouse_delta, factor):
+	obj_vec += calc_box_move(obj_looking_at.transform.origin + obj_vec, -mouse_delta.x * factor)
+
+func calc_box_move(position: Vector3, angle_radians: float) -> Vector3:
+	var dir = position - transform.origin
+	var rotated_dir = dir.rotated(Vector3(0, 1, 0), angle_radians)
+	var new_position = transform.origin + rotated_dir
+	return new_position - position
 
 func walking(delta):
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -87,9 +94,9 @@ func walking(delta):
 	move_and_slide()
 	push(transform.origin - current_position)
 
-func camera_rotation(mouse_delta: Vector2):
-	head.rotate_y(-mouse_delta.x * mouse_sensitivity * 0.001)
-	camera.rotate_x(-mouse_delta.y * mouse_sensitivity * 0.001)
+func camera_rotation(mouse_delta: Vector2, factor: float = 0.001):
+	head.rotate_y(-mouse_delta.x * mouse_sensitivity * factor)
+	camera.rotate_x(-mouse_delta.y * mouse_sensitivity * factor)
 	camera.rotation.x = clamp(
 		camera.rotation.x,
 		-1.1,
