@@ -59,11 +59,11 @@ func _physics_process(delta):
 func moving_box(mouse_delta, factor):
 	obj_vec += calc_box_move(obj_looking_at.transform.origin + obj_vec, -mouse_delta.x * factor)
 
-func calc_box_move(position: Vector3, angle_radians: float) -> Vector3:
-	var dir = position - transform.origin
+func calc_box_move(box_position: Vector3, angle_radians: float) -> Vector3:
+	var dir = box_position - transform.origin
 	var rotated_dir = dir.rotated(Vector3(0, 1, 0), angle_radians)
 	var new_position = transform.origin + rotated_dir
-	return new_position - position
+	return new_position - box_position
 
 func walking(delta):
 	# Add the gravity.
