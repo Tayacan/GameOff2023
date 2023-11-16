@@ -6,4 +6,4 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	objective_label.text = objective
+    objective_label.text = objective
