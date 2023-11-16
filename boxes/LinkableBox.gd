@@ -13,58 +13,58 @@ var y_vel = 0
 signal wants_move(velocity: Vector3)
 
 func _ready():
-	set_glow(neutral_material)
+    set_glow(neutral_material)
 
 func _physics_process(delta):
-	apply_gravity(delta)
-	if link:
-		wants_move.emit(velocity)
-	else:
-		var col = move_and_collide(Vector3(velocity.x, 0, 0), true)
-		if col:
-			velocity.x = 0
-		col = move_and_collide(Vector3(0, velocity.y, 0), true)
-		if col:
-			velocity.y = 0
-			y_vel = 0
-		col = move_and_collide(Vector3(0, 0, velocity.z), true)
-		if col:
-			velocity.z = 0
-		move_and_collide(velocity)
-	
-	velocity = Vector3(0, 0, 0)
+    apply_gravity(delta)
+    if link:
+        wants_move.emit(velocity)
+    else:
+        var col = move_and_collide(Vector3(velocity.x, 0, 0), true)
+        if col:
+            velocity.x = 0
+        col = move_and_collide(Vector3(0, velocity.y, 0), true)
+        if col:
+            velocity.y = 0
+            y_vel = 0
+        col = move_and_collide(Vector3(0, 0, velocity.z), true)
+        if col:
+            velocity.z = 0
+        move_and_collide(velocity)
+    
+    velocity = Vector3(0, 0, 0)
 
 func apply_gravity(delta):
-	y_vel += -gravity * delta
-	var collision = move_and_collide(Vector3(0, y_vel*delta, 0),true)
-	if collision:
-		var point = collision.get_position()
-		y_vel = -transform.origin.distance_to(point)
-	else:
-		velocity.y = y_vel*delta
+    y_vel += -gravity * delta
+    var collision = move_and_collide(Vector3(0, y_vel*delta, 0),true)
+    if collision:
+        var point = collision.get_position()
+        y_vel = -transform.origin.distance_to(point)
+    else:
+        velocity.y = y_vel*delta
 
 func add_link(new_link: Node3D):
-	link = new_link
+    link = new_link
 
 func remove_link():
-	link = null
+    link = null
 
 func add_velocity(vel: Vector3):
-	velocity += vel
+    velocity += vel
 
 func set_glow(material: StandardMaterial3D):
-	for child in get_children():
-		if child.has_method('set_glow_material'):
-			child.set_glow_material(material)
+    for child in get_children():
+        if child.has_method('set_glow_material'):
+            child.set_glow_material(material)
 
 func get_glow() -> StandardMaterial3D:
-	for child in get_children():
-		if child.has_method('get_glow_material'):
-			return child.get_glow_material()
-	return null
+    for child in get_children():
+        if child.has_method('get_glow_material'):
+            return child.get_glow_material()
+    return null
 
 func select():
-	$SelectSphere.show()
+    $SelectSphere.show()
 
 func deselect():
-	$SelectSphere.hide()
+    $SelectSphere.hide()
