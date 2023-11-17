@@ -1,9 +1,5 @@
-This license applies to all files in this repository, EXCEPT the following image
-files:
-    environment/models/floor_tile_floor_tiles_01*.png
-    environment/models/stone_bricks_wall_06*.png
-    environment/models/wall_tile_stone_bricks_wall_06*.png
-    environment/models/wall_tile_window_stone_bricks_wall_06*.png
+This license applies to all code in this repository. Images and other assets are
+explicitly excluded.
 
 --------------------------------------------------------------------------------
 
