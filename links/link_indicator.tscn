@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsy0sjcku5hmx"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_2mnh0"]
-radius = 0.2
-height = 0.4
-
-[node name="Indicator" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-mesh = SubResource("SphereMesh_2mnh0")

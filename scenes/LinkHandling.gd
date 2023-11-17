@@ -7,17 +7,23 @@ enum LinkType { Forward, StaticForward, StaticReverse }
 var all_link_types = LinkType.values()
 var link_type : LinkType = LinkType.Forward
 
-var link_objs = {}
-var link_colors = {
-    LinkType.Forward       : Color(1, 0, 0),
-    LinkType.StaticForward : Color(0, 1, 0),
-    LinkType.StaticReverse : Color(0, 0, 1)
+var link_info = {
+    LinkType.Forward : {
+        "color" : Color(0.165, 0.855, 0.91),
+        "material" : preload("res://materials/glowing_panels/forward_link.tres"),
+        "link" : preload("res://links/forward_link.tscn"),
+    },
+    LinkType.StaticForward : {
+        "color" : Color(1, 0.686, 0.212),
+        "material" : preload("res://materials/glowing_panels/static_forward_link.tres"),
+        "link" : preload("res://links/static_forward_link.tscn"),
+    },
+    LinkType.StaticReverse : {
+        "color" : Color(0.653, 0.464, 1),
+        "material" : preload("res://materials/glowing_panels/static_reverse_link.tres"),
+        "link" : preload("res://links/static_reverse_link.tscn")
+    },
 }
-
-func _ready():
-    link_objs[LinkType.Forward] = preload("res://links/forward_link.tscn")
-    link_objs[LinkType.StaticForward] = preload("res://links/static_forward_link.tscn")
-    link_objs[LinkType.StaticReverse] = preload("res://links/static_reverse_link.tscn")
 
 func next_link_type(current_link_type : LinkType) -> LinkType:
     return ((current_link_type + 1) % LinkType.size()) as LinkType
