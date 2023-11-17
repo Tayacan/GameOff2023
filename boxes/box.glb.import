@@ -30,6 +30,10 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
+"Box": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/box_material.tres"
+},
 "Glow": {
 "use_external/enabled": true,
 "use_external/path": "res://materials/glowing_panels/neutral.tres"

@@ -13,7 +13,7 @@ var y_vel = 0
 signal wants_move(velocity: Vector3)
 
 func _ready():
-    set_glow(neutral_material)
+    set_glow_focus(neutral_material)
 
 func _physics_process(delta):
     apply_gravity(delta)
@@ -52,15 +52,26 @@ func remove_link():
 func add_velocity(vel: Vector3):
     velocity += vel
 
-func set_glow(material: StandardMaterial3D):
+func set_glow_focus(material: StandardMaterial3D):
     for child in get_children():
-        if child.has_method('set_glow_material'):
-            child.set_glow_material(material)
+        if child.has_method('set_glow_focus'):
+            child.set_glow_focus(material)
 
-func get_glow() -> StandardMaterial3D:
+func get_glow_focus() -> StandardMaterial3D:
     for child in get_children():
-        if child.has_method('get_glow_material'):
-            return child.get_glow_material()
+        if child.has_method('get_glow_focus'):
+            return child.get_glow_focus()
+    return null
+
+func set_glow_link(material: StandardMaterial3D):
+    for child in get_children():
+        if child.has_method('set_glow_link'):
+            child.set_glow_link(material)
+
+func get_glow_link() -> StandardMaterial3D:
+    for child in get_children():
+        if child.has_method('get_glow_link'):
+            return child.get_glow_link()
     return null
 
 func select():

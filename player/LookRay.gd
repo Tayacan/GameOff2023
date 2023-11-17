@@ -22,16 +22,16 @@ func _process(_delta):
             looking_at = null
 
 func highlight(body):	
-    old_glow_material = body.get_glow()
-    body.set_glow(glow_material)
+    old_glow_material = body.get_glow_focus()
+    body.set_glow_focus(glow_material)
 
 func remove_highlight(body):
-    body.set_glow(old_glow_material)
+    body.set_glow_focus(old_glow_material)
 
 func _on_started_looking_at_item(body):
-    if body.has_method('set_glow'):
+    if body.has_method('set_glow_focus'):
         highlight(body)
 
 func _on_stopped_looking_at_item(body):
-    if body.has_method('set_glow'):
+    if body.has_method('set_glow_focus'):
         remove_highlight(body)

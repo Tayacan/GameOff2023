@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://coxf5phni3ow1"]
-
-[ext_resource type="PackedScene" uid="uid://fnxnr8e04ive" path="res://evironment/models/box.glb" id="1_vy26s"]
-[ext_resource type="Script" path="res://boxes/glow.gd" id="2_w2ia8"]
-
-[node name="box" instance=ExtResource("1_vy26s")]
-script = ExtResource("2_w2ia8")
