@@ -55,7 +55,7 @@ func handle_link():
         if not link_obj_1:
             link_obj_1 = obj_to_link
             link_obj_1.set_glow_link(LinkHandling.link_info[link_type]["material"])
-        else:
+        elif obj_to_link != link_obj_1:
             link_obj_2 = obj_to_link
             link_obj_1.set_glow_link(LinkHandling.link_info[link_type]["material"])
             link_obj_2.set_glow_link(LinkHandling.link_info[link_type]["material"])
