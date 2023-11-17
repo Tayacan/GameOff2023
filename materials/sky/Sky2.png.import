@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsndek0ncmo0w"
-path.s3tc="res://.godot/imported/Sky2_w_clouds.png-4a30cff46dbcb8d84846d6a277da062e.s3tc.ctex"
+uid="uid://drivlwfji08v5"
+path.s3tc="res://.godot/imported/Sky2.png-6a7584290ad801bbb2e246b95fc95e1b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://materials/sky/Sky2_w_clouds.png"
-dest_files=["res://.godot/imported/Sky2_w_clouds.png-4a30cff46dbcb8d84846d6a277da062e.s3tc.ctex"]
+source_file="res://materials/sky/Sky2.png"
+dest_files=["res://.godot/imported/Sky2.png-6a7584290ad801bbb2e246b95fc95e1b.s3tc.ctex"]
 
 [params]
 
