@@ -1,8 +1,11 @@
 extends Node3D
 
+@export_file() var next_level : String
+
 @onready var tutorials = [
     $Tutorial/Tutorial01,
-    $Tutorial/Tutorial02
+    $Tutorial/Tutorial02,
+    $Tutorial/Tutorial03
 ]
 
 var current_tutorial = 0
@@ -27,3 +30,11 @@ func _on_pause_menu_game_unpaused():
 
 func _on_win_area_1_win_area_entered():
     set_tutorial(1)
+
+
+func _on_win_area_4_win_area_entered():
+    Transition.change_scene(next_level)
+
+
+func _on_win_area_2_win_area_entered():
+    set_tutorial(2)
