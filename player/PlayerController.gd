@@ -140,6 +140,8 @@ func _on_select_ray_started_looking_at_item(body):
         obj_looking_at = body
 
 
-func _on_select_ray_stopped_looking_at_item(body):
-    if control_mode == ControlMode.Walking and obj_looking_at == body:
-        obj_looking_at = null
+func _on_select_ray_stopped_looking_at_item(_body):
+    if control_mode == ControlMode.MovingBox:
+        control_mode = ControlMode.Walking
+        obj_looking_at.deselect()
+    obj_looking_at = null

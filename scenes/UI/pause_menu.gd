@@ -1,6 +1,10 @@
 extends Control
 
+signal game_paused
+signal game_unpaused
+
 func pause():
+    game_paused.emit()
     show()
     Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
     get_tree().paused = true
@@ -9,11 +13,14 @@ func unpause():
     hide()
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
     get_tree().paused = false
+    game_unpaused.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     process_mode = Node.PROCESS_MODE_ALWAYS
-    unpause()
+    hide()
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    get_tree().paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
