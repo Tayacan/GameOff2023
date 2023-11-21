@@ -14,7 +14,7 @@
 
 [node name="Tutorial00" type="Node3D"]
 script = ExtResource("1_g7tsy")
-next_level = "res://scenes/puzzles/01_first_link.tscn"
+next_level = "res://scenes/puzzles/tutorial/01_strong_link.tscn"
 
 [node name="Tutorial" type="Control" parent="."]
 layout_mode = 3
