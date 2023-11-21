@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ope7e5mefw3t"]
+[gd_scene load_steps=12 format=3 uid="uid://ope7e5mefw3t"]
 
 [ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_1fg8n"]
 [ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="1_2rxfy"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="4_st6su"]
 [ext_resource type="PackedScene" uid="uid://drvtot28bflg8" path="res://evironment/blocks/wall_tile.tscn" id="5_kynvc"]
 [ext_resource type="PackedScene" uid="uid://cghd73ms2x6of" path="res://scenes/win_area.tscn" id="6_ta8at"]
+[ext_resource type="PackedScene" uid="uid://cix5062h1dbcu" path="res://evironment/blocks/flowerpot.tscn" id="8_1jman"]
 [ext_resource type="PackedScene" uid="uid://bbrk7fiapomt0" path="res://evironment/blocks/door_tile.tscn" id="10_byhkp"]
 
 [node name="Tutorial00" type="Node3D"]
@@ -58,7 +59,7 @@ theme_type_variation = &"PanelContainerBordered"
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial03"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Right_Key_Dark.png[/img] to remove the link, so you can make a new one."
+text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Right_Key_Dark.png[/img] to cancel the active link."
 
 [node name="Pause Menu" parent="." instance=ExtResource("1_g6mpy")]
 
@@ -365,6 +366,26 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0,
 
 [node name="wall_tile37" parent="Map/Walls" instance=ExtResource("5_kynvc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, -9)
+
+[node name="Flowers" type="Node3D" parent="Map"]
+
+[node name="flowerpot" parent="Map/Flowers" instance=ExtResource("8_1jman")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4)
+
+[node name="flowerpot2" parent="Map/Flowers" instance=ExtResource("8_1jman")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 9, 0, 4)
+
+[node name="flowerpot3" parent="Map/Flowers" instance=ExtResource("8_1jman")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 11, 0, 4)
+
+[node name="flowerpot4" parent="Map/Flowers" instance=ExtResource("8_1jman")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 4)
+
+[node name="flowerpot5" parent="Map/Flowers" instance=ExtResource("8_1jman")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="flowerpot6" parent="Map/Flowers" instance=ExtResource("8_1jman")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
 
 [node name="WinArea1" parent="Map" instance=ExtResource("6_ta8at")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, -4)
