@@ -1,6 +1,6 @@
 extends Node3D
 
-@export_file() var next_level : String
+@export_file("*.tscn") var next_level : String
 
 @onready var tutorials = [
     $Tutorial/Tutorial01

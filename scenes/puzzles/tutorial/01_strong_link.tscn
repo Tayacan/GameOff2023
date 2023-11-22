@@ -15,7 +15,7 @@
 
 [node name="01_strong_link" type="Node3D"]
 script = ExtResource("1_3yrc7")
-next_level = "res://scenes/UI/winscreen.tscn"
+next_level = "res://scenes/puzzles/tutorial/02_reverse_link.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_o4c22")
