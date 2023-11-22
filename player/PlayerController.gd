@@ -5,7 +5,7 @@ var control_mode = ControlMode.Walking
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-@onready var footstep_audio = $AudioStreamPlayer
+@onready var footstep_audio = $FootstepAudio
 
 @export var SPEED = 5.0
 @export var PUSH_SPEED = 3.5
