@@ -35,10 +35,16 @@ shadow_enabled = true
 [node name="door" parent="Map" instance=ExtResource("8_rrjp7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -9)
 
+[node name="door2" parent="Map" instance=ExtResource("8_rrjp7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -15)
+
 [node name="WinArea" parent="Map" instance=ExtResource("11_aph4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8)
 
 [node name="WinArea2" parent="Map" instance=ExtResource("11_aph4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -11)
+
+[node name="WinArea3" parent="Map" instance=ExtResource("11_aph4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -17)
 
 [node name="Floor" type="Node3D" parent="Map"]
@@ -272,6 +278,9 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.999,
 [node name="wall_tile63" parent="Map/Walls" instance=ExtResource("6_v2fb5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.999, 2.999, -15.001)
 
+[node name="wall_tile75" parent="Map/Walls" instance=ExtResource("6_v2fb5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.000999928, 2.999, -12.001)
+
 [node name="wall_tile64" parent="Map/Walls" instance=ExtResource("6_v2fb5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.000999928, 2.999, -18.001)
 
@@ -420,4 +429,5 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2, 0, -3)
 
 [connection signal="win_area_entered" from="Map/WinArea" to="Map/door" method="open_door"]
-[connection signal="win_area_entered" from="Map/WinArea2" to="." method="_on_win_area_2_win_area_entered"]
+[connection signal="win_area_entered" from="Map/WinArea2" to="Map/door2" method="open_door"]
+[connection signal="win_area_entered" from="Map/WinArea3" to="." method="_on_win_area_2_win_area_entered"]
