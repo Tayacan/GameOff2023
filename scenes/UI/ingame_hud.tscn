@@ -21,14 +21,6 @@ offset_right = 580.0
 offset_bottom = 89.0
 theme_override_font_sizes/font_size = 32
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1864.0
-offset_top = 17.0
-offset_right = 1904.0
-offset_bottom = 57.0
-script = ExtResource("1_lt5ct")
-
 [node name="FPS counter" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1768.0
@@ -37,3 +29,19 @@ offset_right = 1836.0
 offset_bottom = 47.0
 text = "FPS: 77"
 script = ExtResource("2_g4caq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 896.0
+offset_right = 1920.0
+offset_bottom = 946.0
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"PanelContainerBordered"
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_lt5ct")

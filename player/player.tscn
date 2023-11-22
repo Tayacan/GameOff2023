@@ -52,7 +52,7 @@ script = ExtResource("3_4tyvl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PushArea"]
 shape = SubResource("CylinderShape3D_blw1q")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="FootstepAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_06uoe")
 volume_db = -25.0
 pitch_scale = 3.63

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://daicmhdedmyqy"]
+
+[ext_resource type="AudioStream" uid="uid://m0ksrcux5cmu" path="res://plucks.mp3" id="1_3fxy4"]
+[ext_resource type="Script" path="res://scenes/MusicPlayer.gd" id="1_4tltx"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_4tltx")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_3fxy4")
+autoplay = true
+
+[node name="LoopPauseTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="LoopPauseTimer" to="." method="_on_timer_timeout"]

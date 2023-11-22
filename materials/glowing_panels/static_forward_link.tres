@@ -3,5 +3,5 @@
 [resource]
 albedo_color = Color(1, 0.686275, 0.211765, 1)
 emission_enabled = true
-emission = Color(1, 0.686389, 0.213067, 1)
-emission_energy_multiplier = 4.0
+emission = Color(1, 0.686275, 0.211765, 1)
+emission_energy_multiplier = 2.0

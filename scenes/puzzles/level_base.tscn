@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1mmkit10cg57"]
+
+[ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_wgq87"]
+[ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_j1s6r"]
+[ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="3_4wybu"]
+[ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="4_gr245"]
+[ext_resource type="PackedScene" uid="uid://bjaqy7nmvlb3t" path="res://evironment/blocks/floor_tile.tscn" id="5_oaoty"]
+[ext_resource type="PackedScene" uid="uid://drvtot28bflg8" path="res://evironment/blocks/wall_tile.tscn" id="6_8w8y7"]
+[ext_resource type="PackedScene" uid="uid://bl4kqaohsstfb" path="res://evironment/blocks/wall_tile_window.tscn" id="7_o64r4"]
+[ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="8_0tmej"]
+[ext_resource type="PackedScene" uid="uid://cix5062h1dbcu" path="res://evironment/blocks/flowerpot.tscn" id="9_5nix1"]
+
+[node name="02_reverse_link" type="Node3D"]
+
+[node name="UI" parent="." instance=ExtResource("1_wgq87")]
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_j1s6r")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_4wybu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("4_gr245")]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="Node3D" parent="Map"]
+
+[node name="floor_tile" parent="Map/Floor" instance=ExtResource("5_oaoty")]
+
+[node name="floor_tile2" parent="Map/Floor" instance=ExtResource("5_oaoty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="floor_tile3" parent="Map/Floor" instance=ExtResource("5_oaoty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="floor_tile4" parent="Map/Floor" instance=ExtResource("5_oaoty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Walls" type="Node3D" parent="Map"]
+
+[node name="wall_tile" parent="Map/Walls" instance=ExtResource("6_8w8y7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="wall_tile_window" parent="Map/Walls" instance=ExtResource("7_o64r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="Boxes" type="Node3D" parent="Map"]
+
+[node name="Box" parent="Map/Boxes" instance=ExtResource("8_0tmej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Flowers" type="Node3D" parent="Map"]
+
+[node name="flowerpot" parent="Map/Flowers" instance=ExtResource("9_5nix1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)

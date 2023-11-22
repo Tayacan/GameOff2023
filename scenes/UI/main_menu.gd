@@ -8,7 +8,7 @@ func _ready():
         continue_button.pressed.connect(_on_continue_button_pressed)
 
 func _on_start_button_pressed():
-    Transition.change_scene("res://scenes/puzzles/01_first_link.tscn")
+    Transition.change_scene("res://scenes/puzzles/tutorial/00_move_box.tscn")
 
 func _on_quit_button_pressed():
     get_tree().quit()
