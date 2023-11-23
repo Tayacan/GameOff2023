@@ -5,6 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_3nrwy")
+shader_parameter/WobbleSpeed = 0.5
 shader_parameter/Color = Color(0.356863, 0.678431, 0.658824, 1)
 shader_parameter/Speed = 0.1
 shader_parameter/UVScale = 1.0
