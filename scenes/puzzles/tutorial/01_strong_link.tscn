@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dy5w4ohdsyscn"]
+[gd_scene load_steps=14 format=3 uid="uid://dy5w4ohdsyscn"]
 
 [ext_resource type="Script" path="res://scenes/puzzles/tutorial/01_strong_link.gd" id="1_3yrc7"]
 [ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="1_o4c22"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://cix5062h1dbcu" path="res://evironment/blocks/flowerpot.tscn" id="9_4du1u"]
 [ext_resource type="PackedScene" uid="uid://cghd73ms2x6of" path="res://scenes/win_area.tscn" id="11_2iavp"]
 [ext_resource type="PackedScene" uid="uid://bbrk7fiapomt0" path="res://evironment/blocks/door_tile.tscn" id="12_2isdx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwhos"]
+size = Vector3(6, 2, 3)
 
 [node name="01_strong_link" type="Node3D"]
 script = ExtResource("1_3yrc7")
@@ -46,6 +49,19 @@ theme_type_variation = &"PanelContainerBordered"
 layout_mode = 2
 bbcode_enabled = true
 text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Middle_Key_Dark.png[/img] to change link type to the [color=ffaf36]strong link[/color]."
+
+[node name="Tutorial02" type="PanelContainer" parent="Tutorial"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 54.0
+offset_right = 352.0
+offset_bottom = 116.0
+theme_type_variation = &"PanelContainerBordered"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial02"]
+layout_mode = 2
+bbcode_enabled = true
+text = "The [color=ffaf36]strong link[/color] can be used to make a box float in the air."
 
 [node name="Player" parent="." instance=ExtResource("3_vyid0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.03251, 7)
@@ -470,7 +486,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, -14)
 [node name="door" parent="Map" instance=ExtResource("12_2isdx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -1, 3)
 
+[node name="Area3D" type="Area3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 1.5)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Area3D"]
+shape = SubResource("BoxShape3D_cwhos")
+
 [connection signal="game_paused" from="Pause Menu" to="." method="_on_pause_menu_game_paused"]
 [connection signal="game_unpaused" from="Pause Menu" to="." method="_on_pause_menu_game_unpaused"]
+[connection signal="win_area_entered" from="Map/WinArea" to="." method="_on_win_area_win_area_entered"]
 [connection signal="win_area_entered" from="Map/WinArea" to="Map/door" method="open_door"]
-[connection signal="win_area_entered" from="Map/WinArea2" to="." method="_on_win_area_win_area_entered"]
+[connection signal="win_area_entered" from="Map/WinArea2" to="." method="_on_win_area_2_win_area_entered"]
+[connection signal="body_entered" from="Map/Area3D" to="." method="_on_area_3d_body_entered"]

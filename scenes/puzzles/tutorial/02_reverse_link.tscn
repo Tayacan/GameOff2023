@@ -17,9 +17,42 @@
 script = ExtResource("1_v85op")
 next_level = "res://scenes/UI/winscreen.tscn"
 
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tutorial01" type="PanelContainer" parent="Tutorial"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 54.0
+offset_right = 352.0
+offset_bottom = 120.0
+theme_type_variation = &"PanelContainerBordered"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial01"]
+layout_mode = 2
+bbcode_enabled = true
+text = "The [color=a776ff]reverse link[/color] lets you use a larger box to lift a smaller box."
+
+[node name="Tutorial02" type="PanelContainer" parent="Tutorial"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 54.0
+offset_right = 352.0
+offset_bottom = 96.0
+theme_type_variation = &"PanelContainerBordered"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial02"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Greater falls create more lift."
+
 [node name="UI" parent="." instance=ExtResource("1_2vd5m")]
 
 [node name="Pause Menu" parent="." instance=ExtResource("2_76gl5")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_sqfdg")
@@ -437,6 +470,10 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 [node name="flowerpot5" parent="Map/Flowers" instance=ExtResource("9_nkiyf")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2, 0, -3)
 
+[connection signal="game_paused" from="Pause Menu" to="." method="_on_pause_menu_game_paused"]
+[connection signal="game_unpaused" from="Pause Menu" to="." method="_on_pause_menu_game_unpaused"]
+[connection signal="win_area_entered" from="Map/WinArea" to="." method="_on_win_area_win_area_entered"]
 [connection signal="win_area_entered" from="Map/WinArea" to="Map/door" method="open_door"]
+[connection signal="win_area_entered" from="Map/WinArea2" to="." method="_on_win_area_2_win_area_entered"]
 [connection signal="win_area_entered" from="Map/WinArea2" to="Map/door2" method="open_door"]
-[connection signal="win_area_entered" from="Map/WinArea3" to="." method="_on_win_area_2_win_area_entered"]
+[connection signal="win_area_entered" from="Map/WinArea3" to="." method="_on_win_area_3_win_area_entered"]
