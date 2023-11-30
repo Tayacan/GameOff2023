@@ -18,3 +18,7 @@ func _on_continue_button_pressed():
     var scene = save.get_line().strip_edges()
     print_debug(scene)
     Transition.change_scene(scene)
+
+
+func _on_credits_button_pressed():
+    Transition.change_scene("res://scenes/UI/credits.tscn")

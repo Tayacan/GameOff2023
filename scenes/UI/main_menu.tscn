@@ -55,6 +55,16 @@ layout_mode = 2
 focus_mode = 0
 text = "Start"
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/HBoxContainer4/Menu"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreditsButton" type="Button" parent="PanelContainer/HBoxContainer4/Menu/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Credits"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer4/Menu"]
 layout_mode = 2
 alignment = 1
@@ -70,4 +80,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer4/Menu/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer4/Menu/HBoxContainer4/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer4/Menu/HBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
