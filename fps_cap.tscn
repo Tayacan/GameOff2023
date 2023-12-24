@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbb5xcmpjj2x2"]
+
+[ext_resource type="Script" path="res://FPSCap.gd" id="1_e2gwr"]
+
+[node name="FPSCap" type="Node"]
+script = ExtResource("1_e2gwr")

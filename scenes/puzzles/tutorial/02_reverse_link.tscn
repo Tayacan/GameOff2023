@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3u53tg85d0km"]
+[gd_scene load_steps=14 format=3 uid="uid://b3u53tg85d0km"]
 
 [ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_2vd5m"]
 [ext_resource type="Script" path="res://scenes/puzzles/tutorial/02_reverse_link.gd" id="1_v85op"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bbrk7fiapomt0" path="res://evironment/blocks/door_tile.tscn" id="8_rrjp7"]
 [ext_resource type="PackedScene" uid="uid://cix5062h1dbcu" path="res://evironment/blocks/flowerpot.tscn" id="9_nkiyf"]
 [ext_resource type="PackedScene" uid="uid://cghd73ms2x6of" path="res://scenes/win_area.tscn" id="11_aph4f"]
+[ext_resource type="PackedScene" uid="uid://dbb5xcmpjj2x2" path="res://fps_cap.tscn" id="13_k4io7"]
 
 [node name="02_reverse_link" type="Node3D"]
 script = ExtResource("1_v85op")
@@ -469,6 +470,8 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 
 [node name="flowerpot5" parent="Map/Flowers" instance=ExtResource("9_nkiyf")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2, 0, -3)
+
+[node name="FPSCap" parent="." instance=ExtResource("13_k4io7")]
 
 [connection signal="game_paused" from="Pause Menu" to="." method="_on_pause_menu_game_paused"]
 [connection signal="game_unpaused" from="Pause Menu" to="." method="_on_pause_menu_game_unpaused"]

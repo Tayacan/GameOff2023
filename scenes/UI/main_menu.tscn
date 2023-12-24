@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbbjvj0dmrkpj"]
+[gd_scene load_steps=5 format=3 uid="uid://dbbjvj0dmrkpj"]
 
 [ext_resource type="Theme" uid="uid://do6m4y5l1ruhd" path="res://ui_theme.tres" id="1_gq6k5"]
 [ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_v4xto"]
 [ext_resource type="PackedScene" uid="uid://74dwo7ty5qh0" path="res://scenes/UI/controls_ui.tscn" id="3_3b3qt"]
+[ext_resource type="PackedScene" uid="uid://dbb5xcmpjj2x2" path="res://fps_cap.tscn" id="4_j727r"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -78,6 +79,8 @@ text = "Quit"
 [node name="ControlMargin" parent="PanelContainer/HBoxContainer4" instance=ExtResource("3_3b3qt")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="FPSCap" parent="." instance=ExtResource("4_j727r")]
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer4/Menu/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer4/Menu/HBoxContainer4/CreditsButton" to="." method="_on_credits_button_pressed"]

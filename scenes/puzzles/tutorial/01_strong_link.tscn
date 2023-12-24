@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy5w4ohdsyscn"]
+[gd_scene load_steps=15 format=3 uid="uid://dy5w4ohdsyscn"]
 
 [ext_resource type="Script" path="res://scenes/puzzles/tutorial/01_strong_link.gd" id="1_3yrc7"]
 [ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="1_o4c22"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cix5062h1dbcu" path="res://evironment/blocks/flowerpot.tscn" id="9_4du1u"]
 [ext_resource type="PackedScene" uid="uid://cghd73ms2x6of" path="res://scenes/win_area.tscn" id="11_2iavp"]
 [ext_resource type="PackedScene" uid="uid://bbrk7fiapomt0" path="res://evironment/blocks/door_tile.tscn" id="12_2isdx"]
+[ext_resource type="PackedScene" uid="uid://dbb5xcmpjj2x2" path="res://fps_cap.tscn" id="13_5vumu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cwhos"]
 size = Vector3(6, 2, 3)
@@ -493,6 +494,8 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Area3D"]
 shape = SubResource("BoxShape3D_cwhos")
+
+[node name="FPSCap" parent="." instance=ExtResource("13_5vumu")]
 
 [connection signal="game_paused" from="Pause Menu" to="." method="_on_pause_menu_game_paused"]
 [connection signal="game_unpaused" from="Pause Menu" to="." method="_on_pause_menu_game_unpaused"]
