@@ -39,6 +39,8 @@ func apply_gravity(delta):
     var collision = move_and_collide(Vector3(0, y_vel*delta, 0),true)
     if collision:
         var point = collision.get_position()
+        point.x = transform.origin.x
+        point.z = transform.origin.z
         y_vel = -transform.origin.distance_to(point)
     else:
         velocity.y = y_vel*delta
