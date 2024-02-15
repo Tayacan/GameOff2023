@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt16jtq300lur"]
+[gd_scene load_steps=10 format=3 uid="uid://bt16jtq300lur"]
 
 [ext_resource type="Script" path="res://player/PlayerController.gd" id="1_t4f5s"]
 [ext_resource type="Script" path="res://player/LookRay.gd" id="2_j518k"]
+[ext_resource type="Script" path="res://player/looking_at.gd" id="2_rwpl4"]
 [ext_resource type="Script" path="res://player/links.gd" id="3_4tyvl"]
 [ext_resource type="AudioStream" uid="uid://d0tlwc72u5hc7" path="res://player/footstep.ogg" id="4_06uoe"]
 [ext_resource type="Texture2D" uid="uid://b88kkpftuxr3i" path="res://player/Crosshair.svg" id="5_qd6hx"]
@@ -28,13 +29,14 @@ shape = SubResource("CapsuleShape3D_2in15")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.579977, 0)
+script = ExtResource("2_rwpl4")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 fov = 60.0
 
 [node name="LookRay" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -10)
-debug_shape_thickness = 1
+debug_shape_custom_color = Color(0, 0.403922, 0, 1)
 script = ExtResource("2_j518k")
 
 [node name="SelectRay" type="RayCast3D" parent="Head/Camera3D"]
@@ -73,12 +75,15 @@ mouse_filter = 2
 texture = ExtResource("5_qd6hx")
 stretch_mode = 3
 
+[connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head" method="_on_look_ray_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_started_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_started_looking_at_item"]
+[connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Head" method="_on_look_ray_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Head/Camera3D/LookRay" method="_on_stopped_looking_at_item"]
 [connection signal="stopped_looking_at_item" from="Head/Camera3D/LookRay" to="Linker" method="_on_stopped_looking_at_item"]
 [connection signal="started_looking_at_item" from="Head/Camera3D/SelectRay" to="." method="_on_select_ray_started_looking_at_item"]
-[connection signal="stopped_looking_at_item" from="Head/Camera3D/SelectRay" to="." method="_on_select_ray_stopped_looking_at_item"]
+[connection signal="started_looking_at_item" from="Head/Camera3D/SelectRay" to="Head" method="_on_select_ray_started_looking_at_item"]
+[connection signal="stopped_looking_at_item" from="Head/Camera3D/SelectRay" to="Head" method="_on_select_ray_stopped_looking_at_item"]
 [connection signal="body_entered" from="PushArea" to="." method="_on_body_entered_push_area"]
 [connection signal="body_exited" from="PushArea" to="." method="_on_body_exited_push_area"]
 [connection signal="timeout" from="FootStepTimer" to="." method="_on_foot_step_timer_timeout"]
