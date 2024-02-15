@@ -17,7 +17,7 @@ func _on_look_ray_started_looking_at_item(body):
     _look_ray_has_obj = true
     started_looking_at(body)
 
-func _on_look_ray_stopped_looking_at_item(body):
+func _on_look_ray_stopped_looking_at_item(_body):
     _look_ray_has_obj = false
     if not _select_ray_has_obj:
         obj = null
@@ -29,7 +29,7 @@ func _on_select_ray_started_looking_at_item(body):
     started_looking_at(body)
     in_grab_range = true
 
-func _on_select_ray_stopped_looking_at_item(body):
+func _on_select_ray_stopped_looking_at_item(_body):
     _select_ray_has_obj = false
     if not _look_ray_has_obj:
         obj = null

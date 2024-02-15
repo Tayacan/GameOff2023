@@ -1,6 +1,8 @@
 extends Node3D
 
-var link_type : LinkHandling.LinkType = LinkHandling.LinkType.Forward
+@export var links: Array[LinkData]
+var link_index = 0
+
 var obj_to_link : PhysicsBody3D = null
 var link_obj_1 : PhysicsBody3D = null
 var link_obj_2 : PhysicsBody3D = null
@@ -8,7 +10,7 @@ var link : Node3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    LinkHandling.link_type_changed.emit(link_type)
+    LinkHandling.link_type_changed.emit(links[link_index])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -18,11 +20,11 @@ func _process(_delta):
 
 func handle_link_switch():
     if Input.is_action_just_pressed("change_link_next"):
-        link_type = LinkHandling.next_link_type(link_type)
-        LinkHandling.link_type_changed.emit(link_type)
+        link_index = (link_index + 1) % links.size()
+        LinkHandling.link_type_changed.emit(links[link_index])
     if Input.is_action_just_pressed("change_link_prev"):
-        link_type = LinkHandling.prev_link_type(link_type)
-        LinkHandling.link_type_changed.emit(link_type)
+        link_index = (link_index - 1) % links.size()
+        LinkHandling.link_type_changed.emit(links[link_index])
 
 func handle_clear():
     if Input.is_action_just_pressed("clear_link"):
@@ -54,13 +56,13 @@ func handle_link():
         # Set up new link
         if not link_obj_1:
             link_obj_1 = obj_to_link
-            link_obj_1.set_glow_link(LinkHandling.link_info[link_type]["material"])
+            link_obj_1.set_glow_link(links[link_index].material)
         elif obj_to_link != link_obj_1:
             link_obj_2 = obj_to_link
-            link_obj_1.set_glow_link(LinkHandling.link_info[link_type]["material"])
-            link_obj_2.set_glow_link(LinkHandling.link_info[link_type]["material"])
+            link_obj_1.set_glow_link(links[link_index].material)
+            link_obj_2.set_glow_link(links[link_index].material)
             
-            link = LinkHandling.link_info[link_type]["link"].instantiate()
+            link = links[link_index].scene.instantiate()
             link_obj_1.add_link(link)
             link_obj_2.add_link(link)
             link.initialize(link_obj_1, link_obj_2)

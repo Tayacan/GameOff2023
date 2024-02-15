@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LinkData" load_steps=4 format=3 uid="uid://dgx4j8qkh0qiv"]
+
+[ext_resource type="Script" path="res://data/links/LinkData.gd" id="1_k7too"]
+[ext_resource type="Material" uid="uid://bnch8tlyw3vi" path="res://materials/glowing_panels/static_forward_link.tres" id="1_qf1qb"]
+[ext_resource type="PackedScene" uid="uid://cmyxsxmvnwuq0" path="res://links/static_forward_link.tscn" id="2_ygdi3"]
+
+[resource]
+script = ExtResource("1_k7too")
+name = "Strong Link"
+material = ExtResource("1_qf1qb")
+scene = ExtResource("2_ygdi3")
+ui_color = Color(1, 0.69, 0.21, 1)
