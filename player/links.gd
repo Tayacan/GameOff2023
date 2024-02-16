@@ -5,7 +5,6 @@ var link_index = 0
 
 var obj_to_link : PhysicsBody3D = null
 var link_obj_1 : PhysicsBody3D = null
-var link_obj_2 : PhysicsBody3D = null
 var link : Node3D = null
 
 # Called when the node enters the scene tree for the first time.
@@ -27,46 +26,39 @@ func handle_link_switch():
         LinkHandling.link_type_changed.emit(links[link_index])
 
 func handle_clear():
-    if Input.is_action_just_pressed("clear_link"):
-        if link_obj_1:
-            link_obj_1.remove_link()
-            link_obj_1.set_glow_link(link_obj_1.neutral_material)
-            link_obj_1 = null
-        if link_obj_2:
-            link_obj_2.remove_link()
-            link_obj_2.set_glow_link(link_obj_2.neutral_material)
-            link_obj_2 = null
-        if link:
+    if Input.is_action_just_pressed("clear_link") and obj_to_link and obj_to_link.is_in_group("linkable"):
+        if obj_to_link.link:
+            link = obj_to_link.link
+            link.obj_1.remove_link()
+            link.obj_1.set_glow_link(link.obj_1.neutral_material)
+            link.obj_2.remove_link()
+            link.obj_2.set_glow_link(link.obj_1.neutral_material)
             link.queue_free()
             link = null
+        else:
+            obj_to_link.remove_link()
+            obj_to_link.set_glow_link(obj_to_link.neutral_material)
+            link_obj_1 = null
 
 func handle_link():
     if Input.is_action_just_pressed("link") and obj_to_link and obj_to_link.is_in_group("linkable"):
-        # Remove old link if there is one
-        if link:
-            link_obj_1.remove_link()
-            link_obj_2.remove_link()
-            link_obj_1.set_glow_link(link_obj_1.neutral_material)
-            link_obj_2.set_glow_link(link_obj_2.neutral_material)
-            link_obj_1 = null
-            link_obj_2 = null
-            link.queue_free()
-            link = null
-        
+        # prevent multiple links on one object
+        if obj_to_link.link:
+            return
         # Set up new link
         if not link_obj_1:
             link_obj_1 = obj_to_link
             link_obj_1.set_glow_link(links[link_index].material)
         elif obj_to_link != link_obj_1:
-            link_obj_2 = obj_to_link
             link_obj_1.set_glow_link(links[link_index].material)
-            link_obj_2.set_glow_link(links[link_index].material)
+            obj_to_link.set_glow_link(links[link_index].material)
             
             link = links[link_index].scene.instantiate()
             link_obj_1.add_link(link)
-            link_obj_2.add_link(link)
-            link.initialize(link_obj_1, link_obj_2)
+            obj_to_link.add_link(link)
+            link.initialize(link_obj_1, obj_to_link)
             add_child(link)
+            link_obj_1 = null
 
 func _on_started_looking_at_item(body: PhysicsBody3D):
     obj_to_link = body
