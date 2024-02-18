@@ -36,6 +36,8 @@ alignment = 1
 [node name="ResumeButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../HBoxContainer3/ResetButton")
+focus_next = NodePath("../../HBoxContainer3/ResetButton")
 text = "Resume"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
@@ -45,6 +47,10 @@ alignment = 1
 [node name="ResetButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer/ResumeButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/QuitToMenuButton")
+focus_next = NodePath("../../HBoxContainer2/QuitToMenuButton")
+focus_previous = NodePath("../../HBoxContainer/ResumeButton")
 text = "Reset Level"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
@@ -54,6 +60,8 @@ alignment = 1
 [node name="QuitToMenuButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer3/ResetButton")
+focus_previous = NodePath("../../HBoxContainer3/ResetButton")
 text = "Quit to Menu"
 
 [node name="ControlMargin" parent="PanelContainer/HBoxContainer" instance=ExtResource("3_g5fbm")]
