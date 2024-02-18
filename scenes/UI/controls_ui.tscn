@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://74dwo7ty5qh0"]
 
-[ext_resource type="Texture2D" uid="uid://c2e7lka3gubjh" path="res://ui_textures/button_prompts/Mouse_Left_Key_Dark.png" id="1_wkmfw"]
-[ext_resource type="Texture2D" uid="uid://hiu3j74bujxg" path="res://ui_textures/button_prompts/Mouse_Right_Key_Dark.png" id="2_8u3m1"]
-[ext_resource type="Texture2D" uid="uid://c0il5f4k0htme" path="res://ui_textures/button_prompts/Mouse_Middle_Key_Dark.png" id="3_rj3n3"]
-[ext_resource type="Texture2D" uid="uid://clk2piw7qc4ee" path="res://ui_textures/button_prompts/W_Key_Dark.png" id="4_tyts7"]
-[ext_resource type="Texture2D" uid="uid://bns1v0lj76bb6" path="res://ui_textures/button_prompts/A_Key_Dark.png" id="5_0ueaq"]
-[ext_resource type="Texture2D" uid="uid://cv6ofciv2el5k" path="res://ui_textures/button_prompts/S_Key_Dark.png" id="6_8mnhb"]
-[ext_resource type="Texture2D" uid="uid://bkw1847ewtu8c" path="res://ui_textures/button_prompts/D_Key_Dark.png" id="7_etehe"]
-[ext_resource type="Texture2D" uid="uid://x5rqb85n8tiy" path="res://ui_textures/button_prompts/Space_Key_Dark.png" id="8_qnulc"]
-[ext_resource type="Texture2D" uid="uid://ctr7d1yqi37v2" path="res://ui_textures/button_prompts/F_Key_Dark.png" id="9_5epg6"]
+[ext_resource type="Texture2D" uid="uid://c2e7lka3gubjh" path="res://ui_textures/button_prompts/keyboard_mouse/Mouse_Left_Key_Dark.png" id="1_wkmfw"]
+[ext_resource type="Texture2D" uid="uid://hiu3j74bujxg" path="res://ui_textures/button_prompts/keyboard_mouse/Mouse_Right_Key_Dark.png" id="2_8u3m1"]
+[ext_resource type="Texture2D" uid="uid://c0il5f4k0htme" path="res://ui_textures/button_prompts/keyboard_mouse/Mouse_Middle_Key_Dark.png" id="3_rj3n3"]
+[ext_resource type="Texture2D" uid="uid://clk2piw7qc4ee" path="res://ui_textures/button_prompts/keyboard_mouse/W_Key_Dark.png" id="4_tyts7"]
+[ext_resource type="Texture2D" uid="uid://bns1v0lj76bb6" path="res://ui_textures/button_prompts/keyboard_mouse/A_Key_Dark.png" id="5_0ueaq"]
+[ext_resource type="Texture2D" uid="uid://cv6ofciv2el5k" path="res://ui_textures/button_prompts/keyboard_mouse/S_Key_Dark.png" id="6_8mnhb"]
+[ext_resource type="Texture2D" uid="uid://bkw1847ewtu8c" path="res://ui_textures/button_prompts/keyboard_mouse/D_Key_Dark.png" id="7_etehe"]
+[ext_resource type="Texture2D" uid="uid://x5rqb85n8tiy" path="res://ui_textures/button_prompts/keyboard_mouse/Space_Key_Dark.png" id="8_qnulc"]
+[ext_resource type="Texture2D" uid="uid://ctr7d1yqi37v2" path="res://ui_textures/button_prompts/keyboard_mouse/F_Key_Dark.png" id="9_5epg6"]
 
 [node name="ControlMargin" type="MarginContainer"]
 theme_override_constants/margin_top = 200

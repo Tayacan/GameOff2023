@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2e7lka3gubjh"
-path="res://.godot/imported/Mouse_Left_Key_Dark.png-a4a4d6d63b854374e67f92758e5f9d3c.ctex"
+uid="uid://bloksiqla0v00"
+path="res://.godot/imported/PS5_Triangle.png-a99d90f6c18802e7f70d599d007c1154.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_textures/button_prompts/Mouse_Left_Key_Dark.png"
-dest_files=["res://.godot/imported/Mouse_Left_Key_Dark.png-a4a4d6d63b854374e67f92758e5f9d3c.ctex"]
+source_file="res://ui_textures/button_prompts/playstation/PS5_Triangle.png"
+dest_files=["res://.godot/imported/PS5_Triangle.png-a99d90f6c18802e7f70d599d007c1154.ctex"]
 
 [params]
 

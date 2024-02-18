@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkw1847ewtu8c"
-path="res://.godot/imported/D_Key_Dark.png-bf26b7b8256c02f0d89cf420a4f2008f.ctex"
+uid="uid://88dd4mv6qxct"
+path="res://.godot/imported/XboxSeriesX_A.png-cfdf66b9b9ed6042096707e2cbcfb11c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_textures/button_prompts/D_Key_Dark.png"
-dest_files=["res://.godot/imported/D_Key_Dark.png-bf26b7b8256c02f0d89cf420a4f2008f.ctex"]
+source_file="res://ui_textures/button_prompts/xbox/XboxSeriesX_A.png"
+dest_files=["res://.godot/imported/XboxSeriesX_A.png-cfdf66b9b9ed6042096707e2cbcfb11c.ctex"]
 
 [params]
 

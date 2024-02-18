@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv6ofciv2el5k"
-path="res://.godot/imported/S_Key_Dark.png-ca50300c890d9b80aa2b481dff930c57.ctex"
+uid="uid://7cyw4uwid3qq"
+path="res://.godot/imported/PS5_Cross.png-2a05744916f5d1eb43518911c3e28bf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_textures/button_prompts/S_Key_Dark.png"
-dest_files=["res://.godot/imported/S_Key_Dark.png-ca50300c890d9b80aa2b481dff930c57.ctex"]
+source_file="res://ui_textures/button_prompts/playstation/PS5_Cross.png"
+dest_files=["res://.godot/imported/PS5_Cross.png-2a05744916f5d1eb43518911c3e28bf0.ctex"]
 
 [params]
 
