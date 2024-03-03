@@ -17,6 +17,9 @@ var current_speed = 0
 @export var mouse_sensitivity = 1
 const mouse_factor = 0.001
 
+@export var gamepad_sensitivity = 1
+const gamepad_factor = 0.05
+
 var obj_to_push : AnimatableBody3D = null
 var selected_object : AnimatableBody3D = null
 var obj_dist : float = 0
@@ -38,6 +41,7 @@ func _physics_process(delta):
         selected_object = null
     if control_mode == ControlMode.Walking:
         camera_rotation(mouse_delta)
+        gamepad_rotation()
         mouse_delta = Vector2(0, 0)
         # Mode switching
         if Input.is_action_just_pressed("grab"):
@@ -50,7 +54,7 @@ func _physics_process(delta):
         var desired_x_angle = -mouse_delta.x * mouse_sensitivity * mouse_factor
         var max_box_move = PUSH_SPEED * delta
         var dist = transform.origin.distance_to(selected_object.transform.origin)
-        
+
         var angle = desired_x_angle
         var desired_move = angle * dist
         if abs(desired_move) > max_box_move:
@@ -105,6 +109,14 @@ func walking(delta):
 func camera_rotation(delta: Vector2):
     camera_rotation_angles(-delta.x * mouse_sensitivity * mouse_factor,
                            -delta.y * mouse_sensitivity * mouse_factor)
+
+func gamepad_rotation():
+    var dir = Input.get_vector("gamepad_rotate_left",
+                               "gamepad_rotate_right",
+                               "gamepad_rotate_down",
+                               "gamepad_rotate_up")
+    camera_rotation_angles(-dir.x * gamepad_sensitivity * gamepad_factor,
+                           dir.y * gamepad_sensitivity * gamepad_factor)
 
 func camera_rotation_angles(angle_y : float, angle_x : float):
     head.rotate_y(angle_y)
