@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 LinkHandling="*res://scenes/LinkHandling.gd"
 Transition="*res://scenes/transition.tscn"
 MusicPlayer="*res://scenes/MusicPlayer.tscn"
+InputDevice="*res://input_device.gd"
 
 [display]
 
