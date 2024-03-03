@@ -34,7 +34,7 @@ theme_type_variation = &"PanelContainerBordered"
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial01"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Press [img=50]ui_textures/button_prompts/F_Key_Dark.png[/img] to grab the box and move it into the marked area."
+text = "Press [img=50]ui_textures/button_prompts/keyboard_mouse/F_Key_Dark.png[/img] to grab the box and move it into the marked area."
 
 [node name="Tutorial02" type="PanelContainer" parent="Tutorial"]
 layout_mode = 0
@@ -47,7 +47,7 @@ theme_type_variation = &"PanelContainerBordered"
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial02"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Left_Key_Dark.png[/img] to link two boxes together with a [color=2adae8]weak link[/color]. Use [img=50]res://ui_textures/button_prompts/Mouse_Middle_Key_Dark.png[/img] to switch between link types."
+text = "Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Left_Key_Dark.png[/img] to link two boxes together with a [color=2adae8]weak link[/color]. Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Middle_Key_Dark.png[/img] to switch between link types."
 
 [node name="Tutorial03" type="PanelContainer" parent="Tutorial"]
 layout_mode = 0
@@ -60,7 +60,7 @@ theme_type_variation = &"PanelContainerBordered"
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial03"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Right_Key_Dark.png[/img] to cancel the active link."
+text = "Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Right_Key_Dark.png[/img] to cancel the active link."
 
 [node name="Pause Menu" parent="." instance=ExtResource("1_g6mpy")]
 

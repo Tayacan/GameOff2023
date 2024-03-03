@@ -49,7 +49,7 @@ theme_type_variation = &"PanelContainerBordered"
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial01"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Middle_Key_Dark.png[/img] to change link type to the [color=ffaf36]strong link[/color]."
+text = "Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Middle_Key_Dark.png[/img] to change link type to the [color=ffaf36]strong link[/color]."
 
 [node name="Tutorial02" type="PanelContainer" parent="Tutorial"]
 layout_mode = 0
