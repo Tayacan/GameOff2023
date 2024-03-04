@@ -59,10 +59,7 @@ func _physics_process(delta):
             desired_x_angle = -mouse_delta.x * mouse_sensitivity * mouse_factor
             desired_y_angle = -mouse_delta.y * mouse_sensitivity * mouse_factor
         else:
-            var dir = Input.get_vector("gamepad_rotate_left",
-                               "gamepad_rotate_right",
-                               "gamepad_rotate_down",
-                               "gamepad_rotate_up")
+            var dir = get_gamepad_dir()
             desired_x_angle = -dir.x * gamepad_sensitivity * gamepad_factor
             desired_y_angle = dir.y * gamepad_sensitivity * gamepad_factor
         var max_box_move = PUSH_SPEED * delta
@@ -123,11 +120,16 @@ func camera_rotation(delta: Vector2):
     camera_rotation_angles(-delta.x * mouse_sensitivity * mouse_factor,
                            -delta.y * mouse_sensitivity * mouse_factor)
 
-func gamepad_rotation():
+func get_gamepad_dir() -> Vector2:
     var dir = Input.get_vector("gamepad_rotate_left",
                                "gamepad_rotate_right",
                                "gamepad_rotate_down",
                                "gamepad_rotate_up")
+    var len = dir.length() ** 2
+    return dir.normalized() * len
+
+func gamepad_rotation():
+    var dir = get_gamepad_dir()
     camera_rotation_angles(-dir.x * gamepad_sensitivity * gamepad_factor,
                            dir.y * gamepad_sensitivity * gamepad_factor)
 
