@@ -125,8 +125,8 @@ func get_gamepad_dir() -> Vector2:
                                "gamepad_rotate_right",
                                "gamepad_rotate_down",
                                "gamepad_rotate_up")
-    var len = dir.length() ** 2
-    return dir.normalized() * len
+    var length = dir.length() ** 2
+    return dir.normalized() * length
 
 func gamepad_rotation():
     var dir = get_gamepad_dir()
