@@ -7,16 +7,17 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    _switch_ui(InputDevice.device)
+    InputDevice.input_device_changed.connect(_switch_ui)
+
+func _switch_ui(device : InputDevice.Device):
     for c in all_controls:
         c.hide()
-    controls_kb.show()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-    for c in all_controls:
-        c.hide()
-    if InputDevice.device == InputDevice.Device.KEYBOARD:
-        controls_kb.show()
-    else:
-        controls_x_box.show()
+    match device:
+        InputDevice.Device.KEYBOARD:
+            print("switching to keyboard")
+            controls_kb.show()
+        InputDevice.Device.XBOX:
+            print("switching to xbox")
+            controls_x_box.show()
+            
