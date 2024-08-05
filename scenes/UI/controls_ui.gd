@@ -15,9 +15,7 @@ func _switch_ui(device : InputDevice.Device):
         c.hide()
     match device:
         InputDevice.Device.KEYBOARD:
-            print("switching to keyboard")
             controls_kb.show()
         InputDevice.Device.XBOX:
-            print("switching to xbox")
             controls_x_box.show()
             
