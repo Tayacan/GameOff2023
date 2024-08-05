@@ -43,7 +43,8 @@ alignment = 1
 visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-focus_mode = 0
+focus_neighbor_bottom = NodePath("../../HBoxContainer/StartButton")
+focus_next = NodePath("../../HBoxContainer/StartButton")
 text = "Continue"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer4/Menu"]
@@ -53,7 +54,10 @@ alignment = 1
 [node name="StartButton" type="Button" parent="PanelContainer/HBoxContainer4/Menu/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-focus_mode = 0
+focus_neighbor_top = NodePath("../../HBoxContainer3/ContinueButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/CreditsButton")
+focus_next = NodePath("../../HBoxContainer4/CreditsButton")
+focus_previous = NodePath("../../HBoxContainer3/ContinueButton")
 text = "Start"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/HBoxContainer4/Menu"]
@@ -63,7 +67,10 @@ alignment = 1
 [node name="CreditsButton" type="Button" parent="PanelContainer/HBoxContainer4/Menu/HBoxContainer4"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-focus_mode = 0
+focus_neighbor_top = NodePath("../../HBoxContainer/StartButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/QuitButton")
+focus_next = NodePath("../../HBoxContainer2/QuitButton")
+focus_previous = NodePath("../../HBoxContainer/StartButton")
 text = "Credits"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer4/Menu"]
@@ -73,12 +80,14 @@ alignment = 1
 [node name="QuitButton" type="Button" parent="PanelContainer/HBoxContainer4/Menu/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-focus_mode = 0
+focus_neighbor_top = NodePath("../../HBoxContainer4/CreditsButton")
+focus_previous = NodePath("../../HBoxContainer4/CreditsButton")
 text = "Quit"
 
 [node name="ControlMargin" parent="PanelContainer/HBoxContainer4" instance=ExtResource("3_3b3qt")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.4
 
 [node name="FPSCap" parent="." instance=ExtResource("4_j727r")]
 

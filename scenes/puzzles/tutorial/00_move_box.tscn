@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ope7e5mefw3t"]
+[gd_scene load_steps=14 format=3 uid="uid://ope7e5mefw3t"]
 
 [ext_resource type="PackedScene" uid="uid://bk3ens0hxj6yg" path="res://scenes/UI/ingame_hud.tscn" id="1_1fg8n"]
 [ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="1_2rxfy"]
 [ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="1_g6mpy"]
 [ext_resource type="Script" path="res://scenes/puzzles/tutorial/00_move_box.gd" id="1_g7tsy"]
 [ext_resource type="PackedScene" uid="uid://bjaqy7nmvlb3t" path="res://evironment/blocks/floor_tile.tscn" id="2_ctxuf"]
+[ext_resource type="Script" path="res://scenes/UI/controls_ui.gd" id="2_vrp5m"]
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="3_tqoka"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="4_st6su"]
 [ext_resource type="PackedScene" uid="uid://drvtot28bflg8" path="res://evironment/blocks/wall_tile.tscn" id="5_kynvc"]
@@ -23,44 +24,68 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Tutorial01" type="PanelContainer" parent="Tutorial"]
+[node name="Tutorial01" type="PanelContainer" parent="Tutorial" node_paths=PackedStringArray("controls_kb", "controls_x_box")]
 layout_mode = 0
 offset_left = 57.0
 offset_top = 54.0
 offset_right = 352.0
 offset_bottom = 156.0
 theme_type_variation = &"PanelContainerBordered"
+script = ExtResource("2_vrp5m")
+controls_kb = NodePath("RichTextLabel")
+controls_x_box = NodePath("RichTextLabel2")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial01"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Press [img=50]ui_textures/button_prompts/F_Key_Dark.png[/img] to grab the box and move it into the marked area."
+text = "Press [img=50]ui_textures/button_prompts/keyboard_mouse/F_Key_Dark.png[/img] to grab the box and move it into the marked area."
 
-[node name="Tutorial02" type="PanelContainer" parent="Tutorial"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Tutorial/Tutorial01"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Press [img=50]ui_textures/button_prompts/xbox/XboxSeriesX_Y.png[/img] to grab the box and move it into the marked area."
+
+[node name="Tutorial02" type="PanelContainer" parent="Tutorial" node_paths=PackedStringArray("controls_kb", "controls_x_box")]
 layout_mode = 0
 offset_left = 57.0
 offset_top = 54.0
 offset_right = 375.0
-offset_bottom = 207.0
+offset_bottom = 222.0
 theme_type_variation = &"PanelContainerBordered"
+script = ExtResource("2_vrp5m")
+controls_kb = NodePath("RichTextLabel")
+controls_x_box = NodePath("RichTextLabel2")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial02"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Left_Key_Dark.png[/img] to link two boxes together with a [color=2adae8]weak link[/color]. Use [img=50]res://ui_textures/button_prompts/Mouse_Middle_Key_Dark.png[/img] to switch between link types."
+text = "Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Left_Key_Dark.png[/img] to link two boxes together with a [color=2adae8]weak link[/color]. Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Middle_Key_Dark.png[/img] to switch between link types."
 
-[node name="Tutorial03" type="PanelContainer" parent="Tutorial"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Tutorial/Tutorial02"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_X.png[/img] to link two boxes together with a [color=2adae8]weak link[/color]. Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Left.png[/img] and [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Right.png[/img] to switch between link types."
+
+[node name="Tutorial03" type="PanelContainer" parent="Tutorial" node_paths=PackedStringArray("controls_kb", "controls_x_box")]
 layout_mode = 0
 offset_left = 57.0
 offset_top = 54.0
 offset_right = 375.0
 offset_bottom = 146.0
 theme_type_variation = &"PanelContainerBordered"
+script = ExtResource("2_vrp5m")
+controls_kb = NodePath("RichTextLabel")
+controls_x_box = NodePath("RichTextLabel2")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial03"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui_textures/button_prompts/Mouse_Right_Key_Dark.png[/img] to cancel the active link."
+text = "Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Right_Key_Dark.png[/img] to cancel the active link."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Tutorial/Tutorial03"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_B.png[/img] to cancel the active link."
 
 [node name="Pause Menu" parent="." instance=ExtResource("1_g6mpy")]
 

@@ -1,21 +1,10 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://do6m4y5l1ruhd"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://do6m4y5l1ruhd"]
 
 [ext_resource type="FontFile" uid="uid://bfctcgpqjx34f" path="res://fonts/multivac/multivac-interference.ttf" id="1_djxe3"]
 [ext_resource type="StyleBox" uid="uid://dus88e5hsdxoj" path="res://ui_resources/button_normal_stylebox.tres" id="1_uxork"]
+[ext_resource type="StyleBox" uid="uid://dbjnmsd1tsj4u" path="res://ui_resources/button_hover_stylebox.tres" id="2_6irsg"]
 [ext_resource type="Texture2D" uid="uid://see1wqdmmanp" path="res://ui_textures/Button04.png" id="2_c4qd8"]
-[ext_resource type="Texture2D" uid="uid://d4imculsip776" path="res://ui_textures/Button03.png" id="2_wksuf"]
 [ext_resource type="Texture2D" uid="uid://bqttnmtqm075x" path="res://ui_textures/Button09.png" id="5_irh55"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilujp"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-texture = ExtResource("2_wksuf")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cjhwh"]
 content_margin_left = 10.0
@@ -42,13 +31,14 @@ texture_margin_bottom = 8.0
 bg_color = Color(0.0588235, 0.184314, 0.243137, 0.831373)
 
 [resource]
+Button/colors/font_focus_color = Color(0.0901961, 0.482353, 0.439216, 1)
 Button/colors/font_hover_color = Color(0.0901961, 0.482353, 0.439216, 1)
 Button/colors/font_hover_pressed_color = Color(0.0901961, 0.486275, 0.439216, 1)
 Button/colors/font_pressed_color = Color(0.0901961, 0.482353, 0.439216, 1)
 Button/font_sizes/font_size = 30
 Button/styles/disabled = ExtResource("1_uxork")
-Button/styles/focus = ExtResource("1_uxork")
-Button/styles/hover = SubResource("StyleBoxTexture_ilujp")
+Button/styles/focus = ExtResource("2_6irsg")
+Button/styles/hover = ExtResource("2_6irsg")
 Button/styles/normal = ExtResource("1_uxork")
 Button/styles/pressed = SubResource("StyleBoxTexture_cjhwh")
 HeaderLabel/base_type = &"Label"

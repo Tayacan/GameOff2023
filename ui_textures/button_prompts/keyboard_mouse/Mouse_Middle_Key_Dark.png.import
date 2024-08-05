@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x5rqb85n8tiy"
-path="res://.godot/imported/Space_Key_Dark.png-84ef87abdb3381c9d5a9032e45b7e857.ctex"
+uid="uid://c0il5f4k0htme"
+path="res://.godot/imported/Mouse_Middle_Key_Dark.png-afaf228266576ec3209a67b8e007c308.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_textures/button_prompts/Space_Key_Dark.png"
-dest_files=["res://.godot/imported/Space_Key_Dark.png-84ef87abdb3381c9d5a9032e45b7e857.ctex"]
+source_file="res://ui_textures/button_prompts/keyboard_mouse/Mouse_Middle_Key_Dark.png"
+dest_files=["res://.godot/imported/Mouse_Middle_Key_Dark.png-afaf228266576ec3209a67b8e007c308.ctex"]
 
 [params]
 
