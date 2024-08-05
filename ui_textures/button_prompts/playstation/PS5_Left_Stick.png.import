@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0il5f4k0htme"
-path="res://.godot/imported/Mouse_Middle_Key_Dark.png-52326bad831c400d8c58fc7a85ebf7ea.ctex"
+uid="uid://dfy3dt5sgpuwo"
+path="res://.godot/imported/PS5_Left_Stick.png-f12deee09994ac660e04bd0326183587.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_textures/button_prompts/Mouse_Middle_Key_Dark.png"
-dest_files=["res://.godot/imported/Mouse_Middle_Key_Dark.png-52326bad831c400d8c58fc7a85ebf7ea.ctex"]
+source_file="res://ui_textures/button_prompts/playstation/PS5_Left_Stick.png"
+dest_files=["res://.godot/imported/PS5_Left_Stick.png-f12deee09994ac660e04bd0326183587.ctex"]
 
 [params]
 

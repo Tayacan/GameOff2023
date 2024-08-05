@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkw1847ewtu8c"
-path="res://.godot/imported/D_Key_Dark.png-bf26b7b8256c02f0d89cf420a4f2008f.ctex"
+uid="uid://cch68qkgntqdw"
+path="res://.godot/imported/PS5_Circle.png-9eab6d37a8e719991864eab7313276b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_textures/button_prompts/D_Key_Dark.png"
-dest_files=["res://.godot/imported/D_Key_Dark.png-bf26b7b8256c02f0d89cf420a4f2008f.ctex"]
+source_file="res://ui_textures/button_prompts/playstation/PS5_Circle.png"
+dest_files=["res://.godot/imported/PS5_Circle.png-9eab6d37a8e719991864eab7313276b5.ctex"]
 
 [params]
 
