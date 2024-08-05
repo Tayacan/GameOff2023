@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dy5w4ohdsyscn"]
+[gd_scene load_steps=16 format=3 uid="uid://dy5w4ohdsyscn"]
 
 [ext_resource type="Script" path="res://scenes/puzzles/tutorial/01_strong_link.gd" id="1_3yrc7"]
 [ext_resource type="Environment" uid="uid://bb4vhnhw8xut3" path="res://scenes/environment.tres" id="1_o4c22"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dl0hs7ygbegqh" path="res://scenes/UI/pause_menu.tscn" id="2_sgs0p"]
 [ext_resource type="PackedScene" uid="uid://bt16jtq300lur" path="res://player/player.tscn" id="3_vyid0"]
 [ext_resource type="PackedScene" uid="uid://bjaqy7nmvlb3t" path="res://evironment/blocks/floor_tile.tscn" id="4_ss661"]
+[ext_resource type="Script" path="res://scenes/UI/controls_ui.gd" id="5_l5eqb"]
 [ext_resource type="PackedScene" uid="uid://drvtot28bflg8" path="res://evironment/blocks/wall_tile.tscn" id="6_ebvaf"]
 [ext_resource type="PackedScene" uid="uid://bl4kqaohsstfb" path="res://evironment/blocks/wall_tile_window.tscn" id="7_iampq"]
 [ext_resource type="PackedScene" uid="uid://ijgj4cyrxngg" path="res://boxes/box.tscn" id="7_o22ud"]
@@ -38,18 +39,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Tutorial01" type="PanelContainer" parent="Tutorial"]
+[node name="Tutorial01" type="PanelContainer" parent="Tutorial" node_paths=PackedStringArray("controls_kb", "controls_x_box")]
+visible = false
 layout_mode = 0
 offset_left = 57.0
 offset_top = 54.0
 offset_right = 352.0
 offset_bottom = 156.0
 theme_type_variation = &"PanelContainerBordered"
+script = ExtResource("5_l5eqb")
+controls_kb = NodePath("RichTextLabel")
+controls_x_box = NodePath("RichTextLabel2")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Tutorial01"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Middle_Key_Dark.png[/img] to change link type to the [color=ffaf36]strong link[/color]."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Tutorial/Tutorial01"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Left.png[/img] and [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Right.png[/img] to change link type to the [color=ffaf36]strong link[/color]."
 
 [node name="Tutorial02" type="PanelContainer" parent="Tutorial"]
 layout_mode = 0
