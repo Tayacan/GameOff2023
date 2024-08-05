@@ -64,7 +64,7 @@ text = "Use [img=50]res://ui_textures/button_prompts/keyboard_mouse/Mouse_Left_K
 [node name="RichTextLabel2" type="RichTextLabel" parent="Tutorial/Tutorial02"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_A.png[/img] to link two boxes together with a [color=2adae8]weak link[/color]. Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Left.png[/img] and [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Right.png[/img] to switch between link types."
+text = "Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_X.png[/img] to link two boxes together with a [color=2adae8]weak link[/color]. Use [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Left.png[/img] and [img=50]res://ui_textures/button_prompts/xbox/XboxSeriesX_Dpad_Right.png[/img] to switch between link types."
 
 [node name="Tutorial03" type="PanelContainer" parent="Tutorial" node_paths=PackedStringArray("controls_kb", "controls_x_box")]
 layout_mode = 0
